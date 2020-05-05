@@ -5,50 +5,57 @@ import { Row, Col } from "reactstrap";
 
 import NoticiasFotos from "../NoticiasFotos";
 
-import Logo from "../../../assets/img/noticias/inauguracion1.jpg";
-import Logo1 from "../../../assets/img/noticias/inauguracion2.jpg";
-import Logo2 from "../../../assets/img/noticias/inauguracion3.jpg";
-import Logo3 from "../../../assets/img/noticias/inauguracion4.jpg";
+import Logo from "../../../assets/img/noticias/inauguracion1_opt.jpg";
+import Logo1 from "../../../assets/img/noticias/inauguracion2_opt.jpg";
+import Logo2 from "../../../assets/img/noticias/inauguracion3_opt.jpg";
+import Logo3 from "../../../assets/img/noticias/inauguracion4_opt.jpg";
 
 import Mano1 from "../../../assets/img/noticias/manos1.JPG";
 import Mano2 from "../../../assets/img/noticias/manos2.JPG";
 import Mano3 from "../../../assets/img/noticias/manos3.JPG";
 import Mano4 from "../../../assets/img/noticias/manos4.JPG";
 
-import Capacitacion1 from "../../../assets/img/noticias/capacitacion1.jpg";
-import Capacitacion2 from "../../../assets/img/noticias/capacitacion2.jpg";
-import Capacitacion3 from "../../../assets/img/noticias/capacitacion3.jpg";
-import Capacitacion4 from "../../../assets/img/noticias/capacitacion4.jpg";
-import Capacitacion5 from "../../../assets/img/noticias/capacitacion5.jpg";
+import Capacitacion1 from "../../../assets/img/noticias/capacitacion1_opt.jpg";
+import Capacitacion2 from "../../../assets/img/noticias/capacitacion2_opt.jpg";
+import Capacitacion3 from "../../../assets/img/noticias/capacitacion3_opt.jpg";
+import Capacitacion4 from "../../../assets/img/noticias/capacitacion4_opt.jpg";
+import Capacitacion5 from "../../../assets/img/noticias/capacitacion5_opt.jpg";
 
 import Certificacion1 from "../../../assets/img/noticias/microsoft1.png";
 import Certificacion2 from "../../../assets/img/noticias/microsoft2.jpg";
 import Certificacion3 from "../../../assets/img/noticias/microsoft3.jpg";
 import Certificacion4 from "../../../assets/img/noticias/microsoft5.png";
 
-import Covid1 from "../../../assets/img/noticias/covid1.jpg";
+import Covid1 from "../../../assets/img/noticias/covid3.png";
 import Covid2 from "../../../assets/img/noticias/covid2.jpg";
+
+import Lavamano1 from "../../../assets/img/noticias/lavamano1.jpeg";
+import Lavamano2 from "../../../assets/img/noticias/lavamano2.jpeg";
 
 const items = [
   {
     src: Logo,
     altText: "Slide 1",
     caption: "",
+    key: '1'
   },
   {
     src: Logo1,
     altText: "Slide 2",
     caption: "",
+    key: '2'
   },
   {
     src: Logo2,
     altText: "Slide 3",
     caption: "",
+    key: '3'
   },
   {
     src: Logo3,
     altText: "Slide 4",
     caption: "",
+    key: '4'
   },
 ];
 
@@ -57,21 +64,25 @@ const itemsMano = [
     src: Mano1,
     altText: "Slide 1",
     caption: "",
+    key: '1'
   },
   {
     src: Mano2,
     altText: "Slide 2",
     caption: "",
+    key: '2'
   },
   {
     src: Mano3,
     altText: "Slide 3",
     caption: "",
+    key: '3'
   },
   {
     src: Mano4,
     altText: "Slide 4",
     caption: "",
+    key: '4'
   },
 ];
 
@@ -80,26 +91,31 @@ const itemsCapacitacion = [
     src: Capacitacion1,
     altText: "Slide 1",
     caption: "",
+    key: '1'
   },
   {
     src: Capacitacion2,
     altText: "Slide 2",
     caption: "",
+    key: '2'
   },
   {
     src: Capacitacion3,
     altText: "Slide 3",
     caption: "",
+    key: '3'
   },
   {
     src: Capacitacion4,
     altText: "Slide 4",
     caption: "",
+    key: '4'
   },
   {
     src: Capacitacion5,
     altText: "Slide 4",
     caption: "",
+    key: '5'
   },
 ];
 
@@ -108,21 +124,25 @@ const itemsCertificacion = [
     src: Certificacion1,
     altText: "Slide 1",
     caption: "",
+    key: '1'
   },
   {
     src: Certificacion2,
     altText: "Slide 2",
     caption: "",
+    key: '2'
   },
   {
     src: Certificacion3,
     altText: "Slide 3",
     caption: "",
+    key: '3'
   },
   {
     src: Certificacion4,
     altText: "Slide 4",
     caption: "",
+    key: '4'
   },
 ];
 
@@ -131,11 +151,28 @@ const itemsCovid = [
     src: Covid1,
     altText: "Slide 1",
     caption: "",
+    key: '1'
   },
   {
     src: Covid2,
     altText: "Slide 2",
     caption: "",
+    key: '2'
+  },
+];
+
+const itemsLava = [
+  {
+    src: Lavamano1,
+    altText: "Slide 1",
+    caption: "",
+    key: '1'
+  },
+  {
+    src: Lavamano2,
+    altText: "Slide 2",
+    caption: "",
+    key: '2'
   },
 ];
 
@@ -147,6 +184,34 @@ const Noticia = () => {
   };
   return (
     <Fragment>
+      <h3 className="text-left`">Instalación de moderno lavamanos (NoTouch)</h3>
+      <Row>
+        <Col md="4" className="mb-4">
+          <NoticiasFotos items={itemsLava} />
+        </Col>
+        <Col md="8">
+          <ShowMoreText
+            lines={5}
+            more="Mostrar más"
+            less="Mostrar menos"
+            anchorClass="text-justify"
+            onClick={executeOnClick}
+            expanded={expanded}
+            width={0}
+          >
+            <div className="text-justify text-black">
+              Hemos instalado los lavamanos “Sin Tocar”, los cuales ha sido
+              desarrollados en el Centro Educativo Planeta Verde como parte de
+              las medidas de prevención de enfermedades. Con este diseño de
+              lavamanos, se minimiza las superficies de contactos de los
+              estudiantes, haciéndolos una opción mas higiénica en este periodo
+              de prevención.
+            </div>
+          </ShowMoreText>
+        </Col>
+      </Row>
+      <br></br>
+      <hr></hr>
       <h3 className="text-left`">
         El centro adopta medidas en la prevención contra el Covid 19
       </h3>

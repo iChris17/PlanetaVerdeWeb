@@ -10,7 +10,7 @@ import {
   Container,
   NavbarToggler,
 } from "reactstrap";
-import Logo from "../../assets/img/logotipogenerico.jpeg";
+import Logo from "../../assets/img/logotipogenerico.png";
 
 function ExamplesNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +22,9 @@ function ExamplesNavbar() {
       <Navbar className={"fixed-top "} color="light" light expand="lg">
         <Container>
           <div className="navbar-brand">
-            <img src={Logo} height="50px" width="250px" alt="Logo" />
+            <img src={Logo} height="50px"width="200px" alt="Logo" />
           </div>
-          <NavbarToggler onClick={toggle} />
+          <NavbarToggler onClick={toggle} className="border-0"/>
           <Collapse className="justify-content-end" isOpen={isOpen} navbar>
             <Nav fill>
               <NavItem>

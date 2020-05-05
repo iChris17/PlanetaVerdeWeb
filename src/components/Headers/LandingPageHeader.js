@@ -23,31 +23,33 @@ function LandingPageHeader(props) {
   });
   return (
     <>
-      <div className="page-header page-header">
+      <div className="page-header">
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/portada.jpg") + ")",
+            backgroundImage: "url(" + require("../../assets/img/portada_opt.jpg") + ")",
           }}
           ref={pageHeader}
         ></div>
-        <div className="content-center mt-2">
+        <div className="content-center">
           <Container>
             {props.screen === "Inicio" ? (
-              <h1 className="title">Centro Educativo Planeta Verde</h1>
+              <h2 className="title">Centro Educativo Planeta Verde</h2>
             ) : (
-              <h1 className="title">{props.screen}</h1>
+              <h2 className="title">{props.screen}</h2>
             )}
             {props.screen === "Inicio" ? (
-              <h3 className="subtitle">
+              <h4 className="subtitle">
                 La naturaleza es una inspiración para una buena educación
-              </h3>
+              </h4>
             ) : null}
             <div className="content-end brand">
               <img
                 alt="..."
                 className="n-logo"
-                src={require("assets/img/Logo1.png")}
+                src={require("../../assets/img/Logo1.png")}
+                width="64px"
+                height="64px"
               ></img>
             </div>
             <div className="text-center">
