@@ -44,7 +44,7 @@ const Plataformas = (props) => {
               </CardText>
               <div className="d-flex justify-content-center">
               <Button
-                  color="success"
+                  color="primary"
                   size="lg"
                   href="https://teams.microsoft.com/"
                   onClick={(e) => {
@@ -84,7 +84,7 @@ const Plataformas = (props) => {
               </CardText>
               <div className="d-flex justify-content-center">
                 <Button
-                  color="success"
+                  color="primary"
                   size="lg"
                   href="https://www.office.com/"
                   onClick={(e) => {

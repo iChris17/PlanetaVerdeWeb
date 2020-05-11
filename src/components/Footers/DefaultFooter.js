@@ -9,14 +9,14 @@ import { Container } from "reactstrap";
 function DefaultFooter() {
   return (
     <>
-      <footer className="footer footer-default">
+      <footer className="footer footer-default bg-primary">
         <Container>
-          <div className="copyright" id="copyright">
+          <div className="copyright text-white" id="copyright">
             © {new Date().getFullYear()},{" "}
             <a
               href="https://www.facebook.com/eduplanetaverde/"
               target="_blank"
-              className="text-success"
+              className="text-white"
             >
               CENTRO EDUCATIVO PLANETA VERDE
             </a>

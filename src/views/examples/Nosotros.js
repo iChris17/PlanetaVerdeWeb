@@ -15,7 +15,7 @@ const Nosotros = (props) => {
         <div className="section section-about-us">
           <Container>
             <Row>
-              <Col className="text-left" md="5">
+              <Col className="text-left" lg="5">
                 <h2 className="title">Misión</h2>
                 <p className="text-black text-justify">
                   <strong>
@@ -39,7 +39,7 @@ const Nosotros = (props) => {
                   </strong>
                 </p>
               </Col>
-              <Col md="7">
+              <Col lg="7">
                 <img
                   src={ImgMision}
                   alt="Imagen Mision"
@@ -50,7 +50,7 @@ const Nosotros = (props) => {
               </Col>
             </Row>
             <Row>
-              <Col md="7">
+              <Col lg="7">
                 <img
                   src={ImgDesc}
                   alt="Imagen Mision"
@@ -59,7 +59,7 @@ const Nosotros = (props) => {
                   className="mt-4 shadow p-2 mb-5 bg-light rounded"
                 />
               </Col>
-              <Col className="text-left" md="5">
+              <Col className="text-left" lg="5">
                 <h2 className="title"> </h2>
                 <p className="text-black text-justify">
                   <strong>

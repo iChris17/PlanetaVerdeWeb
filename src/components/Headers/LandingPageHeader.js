@@ -6,30 +6,16 @@ import { Button, Container } from "reactstrap";
 // core components
 
 function LandingPageHeader(props) {
-  let pageHeader = React.createRef();
 
-  React.useEffect(() => {
-    if (window.innerWidth > 991) {
-      const updateScroll = () => {
-        let windowScrollTop = window.pageYOffset / 3;
-        pageHeader.current.style.transform =
-          "translate3d(0," + windowScrollTop + "px,0)";
-      };
-      window.addEventListener("scroll", updateScroll);
-      return function cleanup() {
-        window.removeEventListener("scroll", updateScroll);
-      };
-    }
-  });
   return (
     <>
       <div className="page-header">
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("../../assets/img/portada_opt.jpg") + ")",
+            backgroundImage:
+              "url(" + require("../../assets/img/portada_opt.jpg") + ")",
           }}
-          ref={pageHeader}
         ></div>
         <div className="content-center">
           <Container>
@@ -38,11 +24,9 @@ function LandingPageHeader(props) {
             ) : (
               <h2 className="title">{props.screen}</h2>
             )}
-            {props.screen === "Inicio" ? (
-              <h4 className="subtitle">
-                La naturaleza es una inspiración para una buena educación
-              </h4>
-            ) : null}
+            <h4 className="subtitle">
+              <i>"La naturaleza es una inspiración para una buena educación"</i>
+            </h4>
             <div className="content-end brand">
               <img
                 alt="..."
@@ -53,14 +37,14 @@ function LandingPageHeader(props) {
               ></img>
             </div>
             <div className="text-center">
-              <p> facebook.com/eduplanetaverde</p>
+              <p>fb.com/planetaverde.edu.ni</p>
               <Button
                 className="btn-icon btn-round"
                 color="info"
-                href="https://www.facebook.com/eduplanetaverde/"
+                href="https://www.fb.com/planetaverde.edu.ni/"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.open("https://www.facebook.com/eduplanetaverde/");
+                  window.open("https://www.fb.com/planetaverde.edu.ni");
                 }}
               >
                 <i className="fab fa-facebook-square"></i>

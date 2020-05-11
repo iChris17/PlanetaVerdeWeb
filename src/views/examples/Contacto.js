@@ -29,7 +29,6 @@ const Contacto = (props) => {
                 </p>
 
                 <p>
-                  {" "}
                   <i class="fas fa-envelope">
                     <a
                       href="mailto:info@planetaverde.edu.ni"
