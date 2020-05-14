@@ -12,7 +12,7 @@ import LandingPage from "./views/examples/LandingPage.js";
 import Nosotros from "./views/examples/Nosotros.js";
 import Contacto from "./views/examples/Contacto.js";
 import Noticias from "./views/examples/Noticias.js";
-import Navbar from "./components/Navbars/ExamplesNavbar";
+import Navbar from "./components/Navbars/Navbar";
 import Footer from "./components/Footers/DefaultFooter";
 
 ReactDOM.render(

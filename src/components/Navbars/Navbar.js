@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import Logo from "../../assets/img/logotipogenerico.png";
 
-function ExamplesNavbar() {
+function ExamplesNavbar(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [typeNavbar, setTypeNavbar] = React.useState("sticky-top");
 
@@ -24,13 +24,13 @@ function ExamplesNavbar() {
   useEffect(() => {
     const updateTypeNavbar = () => {
       if (
-        document.documentElement.scrollTop > 700 ||
-        document.body.scrollTop > 700
+        document.documentElement.scrollTop > 40 ||
+        document.body.scrollTop > 40
       ) {
         setTypeNavbar("fixed-top");
       } else if (
-        document.documentElement.scrollTop < 701 ||
-        document.body.scrollTop < 701
+        document.documentElement.scrollTop < 41 ||
+        document.body.scrollTop < 41
       ) {
         setTypeNavbar("sticky-top");
       }
@@ -48,18 +48,18 @@ function ExamplesNavbar() {
           <Row>
             <Col lg="10">
               <Label className="text-white mt-2 mr-4">
-                <i class="fas fa-mobile-alt"> 8778-7321</i>
+                <i className="fas fa-mobile-alt"> 8778-7321</i>
               </Label>
 
               <Label className="text-white mt-2 mr-4">
-                <i class="fas fa-map-marker-alt">
+                <i className="fas fa-map-marker-alt">
                   {" "}
                   Barrio Santa Ana, del arbolito 1c oeste, 2 1/2c sur.
                 </i>
               </Label>
 
               <Label className="text-white mt-2 mr-4">
-                <i class="fas fa-envelope">
+                <i className="fas fa-envelope">
                   <a
                     href="mailto:info@planetaverde.edu.ni"
                     className="text-white"
@@ -72,7 +72,7 @@ function ExamplesNavbar() {
             </Col>
             <Col lg="2">
               <Label className="text-white mt-2">
-                <i class="fab fa-facebook-square">
+                <i className="fab fa-facebook-square">
                   <a
                     href="https://www.fb.com/planetaverde.edu.ni/"
                     className="text-white"
@@ -82,7 +82,7 @@ function ExamplesNavbar() {
                     }}
                   >
                     {" "}
-                    Síguenos en Facebook
+                    Síguenos
                   </a>
                 </i>
               </Label>
@@ -92,7 +92,7 @@ function ExamplesNavbar() {
       </div>
       <Navbar className={typeNavbar} color="light" light expand="lg">
         <Container>
-          <div className="navbar-brand">
+          <div className="navbar-brand" onClick={()=>{props.history.push('/inicio')}}>
             <img src={Logo} height="50px" width="200px" alt="Logo" />
           </div>
           <NavbarToggler onClick={toggle} className="border-0" />
