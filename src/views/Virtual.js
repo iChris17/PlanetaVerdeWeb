@@ -11,8 +11,8 @@ import {
   Col,
 } from "reactstrap";
 
-import Microsoft from "../../assets/img/microsoft5.png";
-import Office from "../../assets/img/microsoft3.jpg";
+import Microsoft from "../assets/img/microsoft5.png";
+import Office from "../assets/img/microsoft3.jpg";
 
 const Plataformas = (props) => {
   return (

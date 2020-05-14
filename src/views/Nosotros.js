@@ -3,9 +3,9 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
 // core components
-import LandingPageHeader from "../../components/Headers/LandingPageHeader.js";
-import ImgMision from "../../assets/img/imgmision.JPG";
-import ImgDesc from "../../assets/img/imgpresentacion_opt.jpg";
+import LandingPageHeader from "../components/Headers/LandingPageHeader.js";
+import ImgMision from "../assets/img/imgmision.JPG";
+import ImgDesc from "../assets/img/imgpresentacion_opt.jpg";
 
 const Nosotros = (props) => {
   return (

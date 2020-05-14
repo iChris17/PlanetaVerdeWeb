@@ -4,9 +4,9 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
 // core components
-import LandingPageHeader from "../../components/Headers/LandingPageHeader.js";
+import LandingPageHeader from "../components/Headers/LandingPageHeader.js";
 
-import Mapa from "../../components/Mapa/index";
+import Mapa from "../components/Mapa/index";
 
 const Contacto = (props) => {
   return (

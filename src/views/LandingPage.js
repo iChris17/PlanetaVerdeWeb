@@ -4,7 +4,7 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
 // core components
-import LandingPageHeader from "../../components/Headers/LandingPageHeader.js";
+import LandingPageHeader from "../components/Headers/LandingPageHeader.js";
 import Plataformas from "./Virtual.js";
 
 function LandingPage() {
@@ -27,7 +27,7 @@ function LandingPage() {
                   style={{
                     backgroundImage:
                       "url(" +
-                      require("../../assets/img/colegio2_opt.jpg") +
+                      require("../assets/img/colegio2_opt.jpg") +
                       ")",
                   }}
                 ></div>
@@ -38,7 +38,7 @@ function LandingPage() {
                   style={{
                     backgroundImage:
                       "url(" +
-                      require("../../assets/img/colegio4_opt.jpg") +
+                      require("../assets/img/colegio4_opt.jpg") +
                       ")",
                   }}
                 ></div>
@@ -49,7 +49,7 @@ function LandingPage() {
                   style={{
                     backgroundImage:
                       "url(" +
-                      require("../../assets/img/colegio6_opt.jpg") +
+                      require("../assets/img/colegio6_opt.jpg") +
                       ")",
                   }}
                 ></div>
@@ -62,7 +62,7 @@ function LandingPage() {
                   style={{
                     backgroundImage:
                       "url(" +
-                      require("../../assets/img/colegio3_opt.jpg") +
+                      require("../assets/img/colegio3_opt.jpg") +
                       ")",
                   }}
                 ></div>
@@ -73,7 +73,7 @@ function LandingPage() {
                   style={{
                     backgroundImage:
                       "url(" +
-                      require("../../assets/img/colegio5_opt.jpg") +
+                      require("../assets/img/colegio5_opt.jpg") +
                       ")",
                   }}
                 ></div>
@@ -84,7 +84,7 @@ function LandingPage() {
                   style={{
                     backgroundImage:
                       "url(" +
-                      require("../../assets/img/colegio8_opt.jpg") +
+                      require("../assets/img/colegio8_opt.jpg") +
                       ")",
                   }}
                 ></div>
