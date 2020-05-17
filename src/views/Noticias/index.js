@@ -37,25 +37,25 @@ const items = [
     src: Logo,
     altText: "Slide 1",
     caption: "",
-    key: '1'
+    key: "1",
   },
   {
     src: Logo1,
     altText: "Slide 2",
     caption: "",
-    key: '2'
+    key: "2",
   },
   {
     src: Logo2,
     altText: "Slide 3",
     caption: "",
-    key: '3'
+    key: "3",
   },
   {
     src: Logo3,
     altText: "Slide 4",
     caption: "",
-    key: '4'
+    key: "4",
   },
 ];
 
@@ -64,25 +64,25 @@ const itemsMano = [
     src: Mano1,
     altText: "Slide 1",
     caption: "",
-    key: '1'
+    key: "1",
   },
   {
     src: Mano2,
     altText: "Slide 2",
     caption: "",
-    key: '2'
+    key: "2",
   },
   {
     src: Mano3,
     altText: "Slide 3",
     caption: "",
-    key: '3'
+    key: "3",
   },
   {
     src: Mano4,
     altText: "Slide 4",
     caption: "",
-    key: '4'
+    key: "4",
   },
 ];
 
@@ -91,31 +91,31 @@ const itemsCapacitacion = [
     src: Capacitacion1,
     altText: "Slide 1",
     caption: "",
-    key: '1'
+    key: "1",
   },
   {
     src: Capacitacion2,
     altText: "Slide 2",
     caption: "",
-    key: '2'
+    key: "2",
   },
   {
     src: Capacitacion3,
     altText: "Slide 3",
     caption: "",
-    key: '3'
+    key: "3",
   },
   {
     src: Capacitacion4,
     altText: "Slide 4",
     caption: "",
-    key: '4'
+    key: "4",
   },
   {
     src: Capacitacion5,
     altText: "Slide 4",
     caption: "",
-    key: '5'
+    key: "5",
   },
 ];
 
@@ -124,25 +124,25 @@ const itemsCertificacion = [
     src: Certificacion1,
     altText: "Slide 1",
     caption: "",
-    key: '1'
+    key: "1",
   },
   {
     src: Certificacion2,
     altText: "Slide 2",
     caption: "",
-    key: '2'
+    key: "2",
   },
   {
     src: Certificacion3,
     altText: "Slide 3",
     caption: "",
-    key: '3'
+    key: "3",
   },
   {
     src: Certificacion4,
     altText: "Slide 4",
     caption: "",
-    key: '4'
+    key: "4",
   },
 ];
 
@@ -151,13 +151,13 @@ const itemsCovid = [
     src: Covid1,
     altText: "Slide 1",
     caption: "",
-    key: '1'
+    key: "1",
   },
   {
     src: Covid2,
     altText: "Slide 2",
     caption: "",
-    key: '2'
+    key: "2",
   },
 ];
 
@@ -166,13 +166,13 @@ const itemsLava = [
     src: Lavamano1,
     altText: "Slide 1",
     caption: "",
-    key: '1'
+    key: "1",
   },
   {
     src: Lavamano2,
     altText: "Slide 2",
     caption: "",
-    key: '2'
+    key: "2",
   },
 ];
 
@@ -184,7 +184,9 @@ const Noticia = () => {
   };
   return (
     <Fragment>
-      <h3 className="text-left`">Instalación de moderno lavamanos (NoTouch)</h3>
+      <h3 className="text-left`">
+        Instalación de moderno lavamanos LMS (Lavado de Manos Seguro)
+      </h3>
       <Row>
         <Col md="4" className="mb-4">
           <NoticiasFotos items={itemsLava} />
@@ -204,8 +206,25 @@ const Noticia = () => {
               desarrollados en el Centro Educativo Planeta Verde como parte de
               las medidas de prevención de enfermedades. Con este diseño de
               lavamanos, se minimiza las superficies de contactos de los
-              estudiantes, haciéndolos una opción mas higiénica en este periodo
+              estudiantes, haciéndolos una opción más higiénica en este periodo
               de prevención.
+              <br></br>
+              <br></br>
+              ¿En qué ayuda el hecho de tener las manos limpias? Lavarse las
+              manos adecuadamente es la primera línea de defensa contra la
+              propagación de muchas enfermedades, desde un resfriado o catarro
+              común hasta enfermedades más graves, como la meningitis, la
+              bronquiolitis, la gripe, la hepatitis A, y muchos tipos de
+              diarrea.
+              <br></br>
+              <br></br>
+              Si los niños entran en contacto con gérmenes, se pueden infectar
+              solo al tocarse los ojos, la nariz o la boca. Y una vez
+              infectados, solo suele ser cuestión de tiempo que toda la familia
+              se contagie y acabe contrayendo la misma enfermedad. Por lo tanto,
+              ¡no subestime la importancia de lavarse las manos! El poco tiempo
+              que su familia invertirá en lavarse las manos, le ahorrará muchas
+              visitas a la consulta del médico.
             </div>
           </ShowMoreText>
         </Col>
@@ -213,7 +232,7 @@ const Noticia = () => {
       <br></br>
       <hr></hr>
       <h3 className="text-left`">
-        El centro adopta medidas en la prevención contra el Covid 19
+        El centro adopta medidas en la prevención contra el COVID – 19
       </h3>
       <Row>
         <Col md="4" className="mb-4">
@@ -233,11 +252,18 @@ const Noticia = () => {
               Ante la situación actual del COVID-19 y atendiendo las necesidades
               que presentan las instituciones educativas, El Centro Educativo
               Planeta Verde suma esfuerzos para garantizar las medidas de
-              prevención de enfermedades para toda su comunidad educativa. Para
-              ello se ha establecido modalidad semipresencial, áreas de clases
-              abiertas y con las respectivas medidas de distanciamiento, puntos
-              de lavado de manos e instalación de lavamanos “Sin Tocar”, tiempo
-              reducido y productos antisépticos al alcance.
+              prevención de enfermedades para toda su comunidad educativa.
+              <br></br>
+              <br></br>
+              Para ello se ha establecido modalidad semipresencial, áreas de
+              clases abiertas y con las respectivas medidas de distanciamiento,
+              puntos de lavado de manos e instalación de lavamanos “Sin Tocar”,
+              tiempo reducido y productos antisépticos al alcance. Hemos
+              habilitado la plataforma para videos conferencias para clases en
+              vivo por parte de nuestros docentes, así como un plan de acción
+              con estrategias para garantizar la continuidad y calidad de las
+              clases. Todo esto autorizado por el Ministerio de Educación
+              (MINED).
             </div>
           </ShowMoreText>
         </Col>
@@ -253,7 +279,7 @@ const Noticia = () => {
         </Col>
         <Col md="8">
           <ShowMoreText
-            lines={10}
+            lines={5}
             more="Mostrar más"
             less="Mostrar menos"
             anchorClass="text-justify"
@@ -267,6 +293,15 @@ const Noticia = () => {
               para Centro Educativo Planeta Verde. El cuerpo docente recibe
               capacitaciones en áreas educativas, tecnología y herramientas de
               actualidad.
+              <br></br>
+              <br></br>
+              Recientemente, nuestros docentes han sido certificados en
+              plataforma Microsoft Teams para brindar vídeo conferencias,
+              atendiendo de manera virtual a nuestros estudiantes. Estás
+              herramientas nos ubican como una institución educativa pionera en
+              tecnología, para hacer frente al distanciamiento social de una
+              forma efectiva, y garantizando la continuidad de las clases y
+              contenidos con calidad.
             </div>
           </ShowMoreText>
         </Col>
@@ -282,7 +317,7 @@ const Noticia = () => {
         </Col>
         <Col md="8">
           <ShowMoreText
-            lines={10}
+            lines={5}
             more="Mostrar más"
             less="Mostrar menos"
             anchorClass="text-justify"
@@ -350,7 +385,7 @@ const Noticia = () => {
         </Col>
         <Col md="8">
           <ShowMoreText
-            lines={10}
+            lines={5}
             more="Mostrar más"
             less="Mostrar menos"
             anchorClass="text-justify"
@@ -362,19 +397,19 @@ const Noticia = () => {
               Las evidencias del daño ambiental y del cambio climático son
               medibles científicamente en todas las partes del planeta. Afectan
               tanto a las personas como al medio ambiente, lo que provocará
-              cambios drásticos y repercusiones irreversibles. La educación
-              ambiental aumenta la concienciación y el conocimiento de los
-              ciudadanos sobre temáticas o problemas ambientales. Al hacerlo, le
-              brinda al público las herramientas necesarias para tomar
-              decisiones informadas y medidas responsables. En este contexto, se
-              fundó el Centro Educativo Planeta Verde, un proyecto basado
-              principalmente en 3 pilares: “La educación de alta calidad”, “La
-              concientización, cuido y preservación del medio ambiente” y “la
-              tecnología educativa y medio ambiental”. Su construcción inició en
-              2019, terminando su proceso de formalización ante las autoridades
-              correspondientes a finales del mismo año. El 3 de febrero de 2020
-              inicia su primer Curso Escolar con estudiantes de la cuidad de
-              Managua.
+              cambios drásticos y repercusiones irreversibles. <br></br>
+              <br></br>La educación ambiental aumenta la concienciación y el
+              conocimiento de los ciudadanos sobre temáticas o problemas
+              ambientales. Al hacerlo, le brinda al público las herramientas
+              necesarias para tomar decisiones informadas y medidas
+              responsables. En este contexto, se fundó el Centro Educativo
+              Planeta Verde, un proyecto basado principalmente en 3 pilares: “La
+              educación de alta calidad”, “La concientización, cuido y
+              preservación del medio ambiente” y “la tecnología educativa y
+              medio ambiental”. Su construcción inició en 2019, terminando su
+              proceso de formalización ante las autoridades correspondientes a
+              finales del mismo año. El 3 de febrero de 2020 inicia su primer
+              Curso Escolar con estudiantes de la cuidad de Managua.
             </div>
           </ShowMoreText>
         </Col>
