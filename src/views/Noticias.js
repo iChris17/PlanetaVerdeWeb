@@ -1,11 +1,11 @@
 import React from "react";
 
 // reactstrap components
-import { Container, Row, Col } from "reactstrap";
+//import { Row, Col, Container } from "reactstrap";
 
 // core components
 import LandingPageHeader from "../components/Headers/LandingPageHeader.js";
-import Noticia from "./Noticias/index.js";
+import Noticia from "./Noticias/Noticias.js";
 
 const Noticias = () => {
   return (
@@ -14,14 +14,7 @@ const Noticias = () => {
         <LandingPageHeader screen={"Noticias"} />
       </div>
       <div className="section section-about-us">
-        <Container>
-          <Row>
-            <Col className="ml-auto mr-auto text-left">
-              <h2 className="title">Novedades</h2>
-            </Col>
-          </Row>
           <Noticia/>
-        </Container>
       </div>
     </>
   );

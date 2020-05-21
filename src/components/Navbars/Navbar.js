@@ -12,6 +12,10 @@ import {
   Row,
   Col,
   Label,
+  DropdownMenu,
+  DropdownItem,
+  DropdownToggle,
+  UncontrolledDropdown,
 } from "reactstrap";
 import Logo from "../../assets/img/logotipogenerico.png";
 
@@ -92,10 +96,15 @@ function ExamplesNavbar(props) {
       </div>
       <Navbar className={typeNavbar} color="light" light expand="lg">
         <Container>
-          <div className="navbar-brand" onClick={()=>{props.history.push('/inicio')}}>
+          <div
+            className="navbar-brand"
+            onClick={() => {
+              props.history.push("/inicio");
+            }}
+          >
             <img src={Logo} height="50px" width="200px" alt="Logo" />
           </div>
-          <NavbarToggler onClick={toggle} className="border-0" />
+          <NavbarToggler onClick={toggle} className="" />
           <Collapse className="justify-content-end" isOpen={isOpen} navbar>
             <Nav navbar fill>
               <NavItem>
@@ -122,18 +131,20 @@ function ExamplesNavbar(props) {
                   </h5>
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink to="/noticias" tag={Link}>
-                  <h5
-                    className="text-black"
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                  >
+              <UncontrolledDropdown nav>
+                <DropdownToggle caret nav>
+                  <p className="text-black">
                     <strong>Noticias</strong>
-                  </h5>
-                </NavLink>
-              </NavItem>
+                  </p>
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem to="/noticias" tag={Link} onClick={()=>{setIsOpen(false)}}>
+                    Todas las noticias
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Covid-19</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
               <NavItem>
                 <NavLink to="/contacto" tag={Link}>
                   <h5

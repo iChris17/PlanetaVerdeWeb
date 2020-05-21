@@ -9,13 +9,14 @@
         &:before{
             left:auto;
             right: 10px;
+            
         }
     }
 
     .dropdown &{
         @include transform-translate-y-dropdown(-25px);
         visibility: hidden;
-        display: block;
+        display: none;
         @include opacity(0);
         top: 100% !important;
     }
@@ -24,6 +25,7 @@
     &.open{
         @include opacity(1);
         visibility: visible;
+        display: block;
         @include transform-translate-y-dropdown(0px);
     }
 
