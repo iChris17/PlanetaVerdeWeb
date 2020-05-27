@@ -12,10 +12,6 @@ import {
   Row,
   Col,
   Label,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  UncontrolledDropdown,
 } from "reactstrap";
 import Logo from "../../assets/img/logotipogenerico.png";
 
@@ -131,20 +127,18 @@ function ExamplesNavbar(props) {
                   </h5>
                 </NavLink>
               </NavItem>
-              <UncontrolledDropdown nav>
-                <DropdownToggle caret nav>
-                  <p className="text-black">
+              <NavItem>
+                <NavLink to="/noticias" tag={Link}>
+                  <h5
+                    className="text-black"
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  >
                     <strong>Noticias</strong>
-                  </p>
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem to="/noticias" tag={Link} onClick={()=>{setIsOpen(false)}}>
-                    Todas las noticias
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Covid-19</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+                  </h5>
+                </NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink to="/contacto" tag={Link}>
                   <h5

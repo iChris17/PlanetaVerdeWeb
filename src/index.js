@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {  Route, Switch, Redirect ,Router} from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+import { Route, Switch, Redirect, Router } from "react-router-dom";
+import {createBrowserHistory} from "history";
 
 // styles for this kit
 import "./assets/css/bootstrap.min.css";
@@ -15,14 +15,15 @@ import Contacto from "./views/Contacto.js";
 import Noticias from "./views/Noticias.js";
 import Navbar from "./components/Navbars/Navbar";
 import Footer from "./components/Footers/DefaultFooter";
+import DetalleNoticia from "./views/Noticias/Detalle/Detalle";
 
-export const history = createHistory()
+export const history = createBrowserHistory();
 
 history.listen((location, action) => {
-  if (action === 'PUSH') {
+  if (action === "PUSH") {
     window.scrollTo(0, 0);
-    }
-})
+  }
+});
 
 ReactDOM.render(
   <Router history={history}>
@@ -58,11 +59,23 @@ ReactDOM.render(
         )}
       />
       <Route
+      exact
         path="/noticias"
         render={(props) => (
           <React.Fragment>
             <Navbar {...props} />
             <Noticias {...props} />
+            <Footer />
+          </React.Fragment>
+        )}
+      />
+      <Route
+        exact
+        path="/noticias/:id"
+        render={(props) => (
+          <React.Fragment>
+            <Navbar {...props} />
+            <DetalleNoticia {...props} />
             <Footer />
           </React.Fragment>
         )}
