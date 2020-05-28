@@ -128,7 +128,7 @@ function ExamplesNavbar(props) {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/noticias" tag={Link}>
+                <NavLink to="/noticias/recientes-noti" tag={Link}>
                   <h5
                     className="text-black"
                     onClick={() => {
