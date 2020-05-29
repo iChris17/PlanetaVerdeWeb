@@ -1,40 +1,75 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 // reactstrap components
-import { Row, Col, Card, CardBody, Button } from "reactstrap";
-import Covid1 from "../../assets/img/noticias/covid3.png";
+import { Row, Col, Card, CardBody, Button, Spinner } from "reactstrap";
+import Request from "../../service/Request";
+import Pagination from "./Pagination";
 
-const Noticia = () => {
+const Noticia = (props) => {
+  const [noticias, setNoticias] = useState([]);
+  const [loading, setLoading] = useState(false);
+  console.log(props);
+  useEffect(() => {
+    let mounted = true;
+    const req = new Request();
+    if (mounted) {
+      setLoading(true);
+    }
+    req
+      .listGET("/api/noticias/" + props.match.params.categoria)
+      .then((res) => {
+        if (mounted) {
+          setNoticias(res);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return () => (mounted = false);
+  }, [props.match.params.categoria]);
+
   return (
     <Fragment>
-      <Card>
-        <CardBody>
-          <h3 className="text-center`">
-            <a href="/">
-              El centro adopta medidas en la prevención contra el COVID – 19
-            </a>
-          </h3>
-          <hr></hr>
-          <Row>
-            <Col md="4">
-              <img alt="" src={Covid1} height="100%" width="100%"/>
-            </Col>
-            <Col md="8">
-              <p className="text-justify text-primary">
-                <strong>
-                  Ante la situación actual del COVID-19 y atendiendo las
-                  necesidades que presentan las instituciones educativas, El
-                  Centro Educativo Planeta Verde suma esfuerzos para garantizar
-                  las medidas de prevención de enfermedades para toda su
-                  comunidad educativa.
-                </strong>
-              </p>
-
-            </Col>
-          </Row>
-          <hr></hr>
-          <div className="d-flex flex-wrap justify-content-center"><Button color="primary" size="lg">Leer más</Button></div>
-        </CardBody>
-      </Card>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Fragment>
+          {noticias.map((u, i) => {
+            return (
+              <Card key={i}>
+                <CardBody>
+                  <h3 className="text-center`">{u.nbNoticia}</h3>
+                  <hr></hr>
+                  <Row>
+                    <Col md="4">
+                      <img alt="" src={u.vlImage} height="100%" width="100%" />
+                    </Col>
+                    <Col md="8">
+                      <p className="text-justify text-primary">
+                        <strong>{u.deNoticia}</strong>
+                      </p>
+                    </Col>
+                  </Row>
+                  <hr></hr>
+                  <div className="d-flex flex-wrap justify-content-center">
+                    <Button
+                      color="primary"
+                      size="lg"
+                      onClick={() => {
+                        props.history.push(props.match.url + u.idNoticiaHeader);
+                      }}
+                    >
+                      Leer más
+                    </Button>
+                  </div>
+                </CardBody>
+              </Card>
+            );
+          })}
+          <Pagination/>
+        </Fragment>
+      )}
     </Fragment>
   );
 };

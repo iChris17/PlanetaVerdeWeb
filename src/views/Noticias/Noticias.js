@@ -13,7 +13,6 @@ import {
   Spinner,
 } from "reactstrap";
 import Articulos from "./index.js";
-import Pagination from "./Pagination";
 import Request from "../../service/Request";
 import LandingPageHeader from "../../components/Headers/LandingPageHeader";
 
@@ -21,7 +20,7 @@ const Noticia = (props) => {
   const [categoriasArticulo, setCategoriasArticulo] = useState([]);
   const [categoriasNoticia, setCategoriasNoticia] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(props);
+  //console.log(props);
   useEffect(() => {
     let mounted = true;
     const req = new Request();
@@ -148,8 +147,7 @@ const Noticia = (props) => {
               <h3 className="text-primary title">
                 {NombreCategoria(props.match.params.categoria)}
               </h3>
-              <Articulos />
-              <Pagination />
+              <Articulos history={props.history} match={props.match}/>
             </Col>
             <Col className="mr-4">
               <h3 className="text-primary title">Buscar</h3>
