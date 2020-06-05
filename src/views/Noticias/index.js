@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 const Noticia = (props) => {
   const [noticias, setNoticias] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(props);
+
   useEffect(() => {
     let mounted = true;
     const req = new Request();
@@ -57,7 +57,7 @@ const Noticia = (props) => {
                       color="primary"
                       size="lg"
                       onClick={() => {
-                        props.history.push(props.match.url + u.idNoticiaHeader);
+                        props.history.push(props.match.url +"/"+ u.idNoticiaHeader);
                       }}
                     >
                       Leer más
