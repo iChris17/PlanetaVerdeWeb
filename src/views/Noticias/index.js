@@ -39,14 +39,14 @@ const Noticia = (props) => {
             return (
               <Card key={i}>
                 <CardBody>
-                  <h3 className="text-center`">{u.nbNoticia}</h3>
+                  <h3 className="text-left">{u.nbNoticia}</h3>
                   <hr></hr>
                   <Row>
                     <Col md="4">
-                      <img alt="" src={u.vlImage} height="100%" width="100%" />
+                      <img alt="" src={u.vlImage} height="auto" width="100%" />
                     </Col>
                     <Col md="8">
-                      <p className="text-justify text-primary">
+                      <p className="text-justify ">
                         <strong>{u.deNoticia}</strong>
                       </p>
                     </Col>
@@ -60,7 +60,7 @@ const Noticia = (props) => {
                         props.history.push(props.match.url +"/"+ u.idNoticiaHeader);
                       }}
                     >
-                      Leer más
+                      Continuar leyendo
                     </Button>
                   </div>
                 </CardBody>

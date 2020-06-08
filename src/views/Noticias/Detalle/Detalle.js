@@ -14,12 +14,14 @@ function Detalle(props) {
   const [vlImage, setVlImage] = useState("");
   const [txNoticia, setTxNoticia] = useState(null);
   const [title, setTitle] = useState("");
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(false);
   const [subtitle, setSubtitle] = useState("");
+  const [categoriaheader, setCatHeader] = useState("");
 
   useEffect(() => {
     let mounted = true;
     const req = new Request();
+    setloading(true);
     req
       .listGET("/api/noticiadetalles/" + props.match.params.id)
       .then((res) => {
@@ -53,6 +55,7 @@ function Detalle(props) {
         setSubtitle(
           f.getFecha() + " | " + res.tpCategoria + " | " + res.nbCategoria
         );
+        setCatHeader(res.nbCategoriaHeader);
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +66,7 @@ function Detalle(props) {
     <>
       <div style={{ marginLeft: "3.5rem", marginRight: "3.5rem" }}>
         {loading ? (
-          <Spinner />
+          <Spinner height={"500px"} />
         ) : (
           <Row>
             <Col md="9">
@@ -76,7 +79,7 @@ function Detalle(props) {
                   className="mt-4 mb-2"
                   color="primary"
                   onClick={() => {
-                    props.history.goBack();
+                    props.history.push('/noticias/recientes-noti');
                     document.title = "Centro Educativo Planeta Verde";
                   }}
                 >
@@ -87,7 +90,10 @@ function Detalle(props) {
                   <Col dangerouslySetInnerHTML={{ __html: txNoticia }}></Col>
                 </Row>
                 <ShareButtons title={title} />
-                <BottomSection />
+                <BottomSection
+                  categoria={categoriaheader}
+                  history={props.history}
+                />
               </Fragment>
             </Col>
             <SideNews />

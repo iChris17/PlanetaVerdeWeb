@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import {
   Col,
   Card,
@@ -8,8 +8,33 @@ import {
   Button,
   Input,
 } from "reactstrap";
+import Request from "../../../service/Request";
+import Spinner from "../../../components/Spinner/Spinner";
 
 const SideNews = () => {
+  const [dataNews, setDataNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+    const req = new Request();
+
+    req
+      .listGET("/api/noticias/recientes?seccion=3")
+      .then((res) => {
+        //console.log(res);
+        if (mounted) {
+          setDataNews(res);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return () => (mounted = false);
+  }, []);
+
   return (
     <Fragment>
       <Col md="3">
@@ -29,50 +54,21 @@ const SideNews = () => {
         <h3 className="text-primary title">Recientes</h3>
         <hr></hr>
 
-        <Card>
-          <img
-            width="100%"
-            src={require("../../../assets/img/noticias/capacitacion1_opt.jpg")}
-            alt=""
-          />
-          <hr></hr>
-          <h6 className=" ml-2 mr-2 mb-3 text-center">
-            <a href="/">
-              Médicos de Nicaragua en lucha permanente contra la pandemia de la
-              Covid-19
-            </a>
-          </h6>
-        </Card>
-
-        <Card>
-          <img
-            width="100%"
-            src={require("../../../assets/img/noticias/covid1.jpg")}
-            alt=""
-          />
-          <hr></hr>
-          <h6 className=" ml-2 mr-2 mb-3 text-center">
-            <a href="/">
-              Médicos de Nicaragua en lucha permanente contra la pandemia de la
-              Covid-19
-            </a>
-          </h6>
-        </Card>
-
-        <Card>
-          <img
-            width="100%"
-            src={require("../../../assets/img/noticias/microsoft1.png")}
-            alt=""
-          />
-          <hr></hr>
-          <h6 className=" ml-2 mr-2 mb-3 text-center">
-            <a href="/">
-              Médicos de Nicaragua en lucha permanente contra la pandemia de la
-              Covid-19
-            </a>
-          </h6>
-        </Card>
+        {!loading ? (
+          dataNews.map((u, i) => {
+            return (
+              <Card key={i}>
+                <img width="100%" src={u.vlImage} alt="" />
+                <hr></hr>
+                <h6 className=" ml-2 mr-2 mb-3 text-center">
+                  <a href="/">{u.nbNoticia}</a>
+                </h6>
+              </Card>
+            );
+          })
+        ) : (
+          <Spinner height={"100px"} />
+        )}
       </Col>
     </Fragment>
   );
