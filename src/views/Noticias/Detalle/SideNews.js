@@ -11,7 +11,7 @@ import {
 import Request from "../../../service/Request";
 import Spinner from "../../../components/Spinner/Spinner";
 
-const SideNews = () => {
+const SideNews = (props) => {
   const [dataNews, setDataNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,22 @@ const SideNews = () => {
 
     return () => (mounted = false);
   }, []);
+
+  const getcategoria = async (idCategoria) => {
+    const req = new Request();
+    let nbCategoriaHeader = "";
+    await req
+      .listGET("/api/categorias/" + idCategoria)
+      .then((res) => {
+        //console.log(res);
+        nbCategoriaHeader = res.nbCategoriaHeader;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    return nbCategoriaHeader;
+  };
 
   return (
     <Fragment>
@@ -61,7 +77,19 @@ const SideNews = () => {
                 <img width="100%" src={u.vlImage} alt="" />
                 <hr></hr>
                 <h6 className=" ml-2 mr-2 mb-3 text-center">
-                  <a href="/">{u.nbNoticia}</a>
+                  <a
+                    href="/"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      getcategoria(u.idCategoria).then((res) => {
+                        props.history.push(
+                          "/noticias/" + res + "/" + u.idNoticiaHeader
+                        );
+                      });
+                    }}
+                  >
+                    {u.nbNoticia}
+                  </a>
                 </h6>
               </Card>
             );

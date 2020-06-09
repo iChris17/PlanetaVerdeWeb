@@ -79,7 +79,7 @@ function Detalle(props) {
                   className="mt-4 mb-2"
                   color="primary"
                   onClick={() => {
-                    props.history.push('/noticias/recientes-noti');
+                    props.history.push("/noticias/recientes-noti");
                     document.title = "Centro Educativo Planeta Verde";
                   }}
                 >
@@ -96,7 +96,7 @@ function Detalle(props) {
                 />
               </Fragment>
             </Col>
-            <SideNews />
+            <SideNews history={props.history} />
           </Row>
         )}
       </div>
