@@ -19,17 +19,17 @@ import DetalleNoticia from "./views/Noticias/Detalle/Detalle";
 
 export const history = createBrowserHistory();
 
-/*history.listen((location, action) => {
+history.listen((location, action) => {
   if (action === "PUSH" && !location.pathname.includes("noticias")) {
     window.scrollTo(0, 0);
   }
-});*/
+});
 
-history.listen((location, action) => {
+/*history.listen((location, action) => {
   if (action === "PUSH") {
     window.scrollTo(0, 0);
   }
-});
+});*/
 
 ReactDOM.render(
   <Router history={history}>

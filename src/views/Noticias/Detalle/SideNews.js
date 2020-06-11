@@ -20,7 +20,7 @@ const SideNews = (props) => {
     const req = new Request();
 
     req
-      .listGET("/api/noticias/recientes?seccion=3")
+      .listGET("/api/noticias/recientes-noti?seccion=3")
       .then((res) => {
         //console.log(res);
         if (mounted) {
@@ -35,14 +35,14 @@ const SideNews = (props) => {
     return () => (mounted = false);
   }, []);
 
-  const getcategoria = async (idCategoria) => {
+  const getcategoria = async (nbNoticia) => {
     const req = new Request();
     let nbCategoriaHeader = "";
     await req
-      .listGET("/api/categorias/" + idCategoria)
+      .listGET("/api/categorias/" + nbNoticia)
       .then((res) => {
         //console.log(res);
-        nbCategoriaHeader = res.nbCategoriaHeader;
+        nbCategoriaHeader = res[0].nbCategoriaHeader;
       })
       .catch((err) => {
         console.log(err);
@@ -81,7 +81,7 @@ const SideNews = (props) => {
                     href="/"
                     onClick={(e) => {
                       e.preventDefault();
-                      getcategoria(u.idCategoria).then((res) => {
+                      getcategoria(u.idNoticiaHeader).then((res) => {
                         props.history.push(
                           "/noticias/" + res + "/" + u.idNoticiaHeader
                         );

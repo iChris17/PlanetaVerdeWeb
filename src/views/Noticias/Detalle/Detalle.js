@@ -31,10 +31,7 @@ function Detalle(props) {
           setVlImage(res.idNoticiaHeaderNavigation.vlImage);
           setTitle(res.idNoticiaHeaderNavigation.nbNoticia);
           document.title = "CEPV | " + res.idNoticiaHeaderNavigation.nbNoticia;
-          getcategoria(
-            res.idNoticiaHeaderNavigation.idCategoria,
-            res.fhRegistro
-          );
+          getcategoria(res.idNoticiaHeader, res.fhRegistro);
           setloading(false);
         }
       })
@@ -45,17 +42,17 @@ function Detalle(props) {
     return () => (mounted = false);
   }, [props.match.params.id]);
 
-  const getcategoria = (idCategoria, fecha) => {
+  const getcategoria = (nbNoticia, fecha) => {
     const f = new Fecha(fecha);
     const req = new Request();
     req
-      .listGET("/api/categorias/" + idCategoria)
+      .listGET("/api/categorias/" + nbNoticia)
       .then((res) => {
         //console.log(res);
         setSubtitle(
-          f.getFecha() + " | " + res.tpCategoria + " | " + res.nbCategoria
+          f.getFecha() + " | " + res[0].tpCategoria + " | " + res[0].nbCategoria
         );
-        setCatHeader(res.nbCategoriaHeader);
+        setCatHeader(res[0].nbCategoriaHeader);
       })
       .catch((err) => {
         console.log(err);

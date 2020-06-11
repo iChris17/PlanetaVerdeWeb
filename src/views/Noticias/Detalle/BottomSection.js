@@ -6,21 +6,24 @@ import Spinner from "../../../components/Spinner/Spinner";
 const BottomSection = (props) => {
   const [loading, setLoading] = useState(true);
   const [dataNews, setDataNews] = useState([]);
-
   useEffect(() => {
     let mounted = true;
-    const req = new Request();
-    req
-      .listGET("/api/noticias/" + props.categoria + "?seccion=4")
-      .then((res) => {
-        if (mounted) {
-          setDataNews(res);
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (props.categoria !== "") {
+      const req = new Request();
+      req
+        .listGET("/api/noticias/" + props.categoria + "?seccion=4")
+        .then((res) => {
+          if (mounted) {
+            //console.log(props.categoria);
+            setDataNews(res);
+            setLoading(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
     return () => (mounted = false);
   }, [props.categoria]);
   return (
