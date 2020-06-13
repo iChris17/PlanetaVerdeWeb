@@ -14,21 +14,25 @@ const Noticia = (props) => {
     if (mounted) {
       setLoading(true);
     }
-    req
-      .listGET("/api/noticias/" + props.match.params.categoria)
-      .then((res) => {
-        if (mounted && res.code === 200) {
-          //console.log(res);
-          setNoticias(res.data);
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
+    if (props.busqueda !== null) {
+      setNoticias(props.busqueda);
+      setLoading(false);
+    } else {
+      req
+        .listGET("/api/noticias/" + props.match.params.categoria)
+        .then((res) => {
+          if (mounted && res.code === 200) {
+            //console.log(res);
+            setNoticias(res.data);
+            setLoading(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
     return () => (mounted = false);
-  }, [props.match.params.categoria]);
+  }, [props.match.params.categoria, props.busqueda]);
 
   const getcategoria = async (nbNoticia) => {
     const req = new Request();

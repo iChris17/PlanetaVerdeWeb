@@ -20,6 +20,9 @@ const Noticia = (props) => {
   const [categoriasArticulo, setCategoriasArticulo] = useState([]);
   const [categoriasNoticia, setCategoriasNoticia] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [indSearch, setIndSearch] = useState(false);
+  const [vlBusqueda, setVlBusqueda] = useState("");
+  const [dataBusqueda, setDataBusqueda] = useState(null);
   //console.log(props);
   useEffect(() => {
     let mounted = true;
@@ -28,7 +31,7 @@ const Noticia = (props) => {
       .listGET("/api/categorias?tipo=articulo")
       .then((res) => {
         //console.log(res)
-        if (mounted && res.code===200) {
+        if (mounted && res.code === 200) {
           setCategoriasArticulo(res.data);
         }
       })
@@ -39,7 +42,7 @@ const Noticia = (props) => {
     req
       .listGET("/api/categorias?tipo=noticia")
       .then((res) => {
-        if (mounted && res.code===200) {
+        if (mounted && res.code === 200) {
           //console.log(res)
           setCategoriasNoticia(res.data);
           setLoading(false);
@@ -66,6 +69,22 @@ const Noticia = (props) => {
         return categoria.NbCategoria;
       }
     }
+  };
+
+  const buscarNoticia = () => {
+    const req = new Request();
+    req
+      .listGET("/api/noticias/buscar/" + vlBusqueda)
+      .then((res) => {
+        console.log(res);
+        if (res.code === 200) {
+          setIndSearch(true);
+          setDataBusqueda(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -147,9 +166,15 @@ const Noticia = (props) => {
             </Col>
             <Col md="6">
               <h3 className="text-primary title">
-                {NombreCategoria(props.match.params.categoria)}
+                {!indSearch
+                  ? NombreCategoria(props.match.params.categoria)
+                  : "Resultados de Busqueda"}
               </h3>
-              <Articulos history={props.history} match={props.match}/>
+              <Articulos
+                history={props.history}
+                match={props.match}
+                busqueda={dataBusqueda}
+              />
             </Col>
             <Col className="mr-4">
               <h3 className="text-primary title">Buscar</h3>
@@ -157,11 +182,22 @@ const Noticia = (props) => {
                 <CardBody>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">
-                      <Button color="primary">
+                      <Button
+                        color="primary"
+                        onClick={() => {
+                          buscarNoticia();
+                        }}
+                      >
                         <i className="fas fa-search"></i>
                       </Button>
                     </InputGroupAddon>
-                    <Input placeholder="Buscar" />
+                    <Input
+                      placeholder="Buscar"
+                      value={vlBusqueda}
+                      onChange={(e) => {
+                        setVlBusqueda(e.target.value);
+                      }}
+                    />
                   </InputGroup>
                 </CardBody>
               </Card>
