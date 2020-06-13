@@ -13,9 +13,9 @@ const BottomSection = (props) => {
       req
         .listGET("/api/noticias/" + props.categoria + "?seccion=4")
         .then((res) => {
-          if (mounted) {
+          if (mounted&&res.code===200) {
             //console.log(props.categoria);
-            setDataNews(res);
+            setDataNews(res.data);
             setLoading(false);
           }
         })
@@ -36,7 +36,7 @@ const BottomSection = (props) => {
             return (
               <Col md="3" key={i}>
                 <Card>
-                  <img width="100%" height="150px" src={u.vlImage} alt="" />
+                  <img width="100%" height="150px" src={u.VlImage} alt="" />
                   <hr></hr>
                   <h6 className=" ml-2 mr-2 mb-3 text-center">
                     <a
@@ -47,11 +47,11 @@ const BottomSection = (props) => {
                           "/noticias/" +
                             props.categoria +
                             "/" +
-                            u.idNoticiaHeader
+                            u.IdNoticiaHeader
                         );
                       }}
                     >
-                      {u.nbNoticia}
+                      {u.NbNoticia}
                     </a>
                   </h6>
                 </Card>

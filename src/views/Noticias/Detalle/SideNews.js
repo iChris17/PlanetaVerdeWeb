@@ -20,11 +20,11 @@ const SideNews = (props) => {
     const req = new Request();
 
     req
-      .listGET("/api/noticias/recientes-noti?seccion=3")
+      .listGET("/api/noticias/recientes-noticias?seccion=3")
       .then((res) => {
         //console.log(res);
-        if (mounted) {
-          setDataNews(res);
+        if (mounted && res.code === 200) {
+          setDataNews(res.data);
           setLoading(false);
         }
       })
@@ -42,7 +42,9 @@ const SideNews = (props) => {
       .listGET("/api/categorias/" + nbNoticia)
       .then((res) => {
         //console.log(res);
-        nbCategoriaHeader = res[0].nbCategoriaHeader;
+        if (res.code === 200) {
+          nbCategoriaHeader = res.data[0].NbCategoriaHeader;
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -74,21 +76,21 @@ const SideNews = (props) => {
           dataNews.map((u, i) => {
             return (
               <Card key={i}>
-                <img width="100%" src={u.vlImage} alt="" />
+                <img width="100%" src={u.VlImage} alt="" />
                 <hr></hr>
                 <h6 className=" ml-2 mr-2 mb-3 text-center">
                   <a
                     href="/"
                     onClick={(e) => {
                       e.preventDefault();
-                      getcategoria(u.idNoticiaHeader).then((res) => {
+                      getcategoria(u.IdNoticiaHeader).then((res) => {
                         props.history.push(
-                          "/noticias/" + res + "/" + u.idNoticiaHeader
+                          "/noticias/" + res + "/" + u.IdNoticiaHeader
                         );
                       });
                     }}
                   >
-                    {u.nbNoticia}
+                    {u.NbNoticia}
                   </a>
                 </h6>
               </Card>

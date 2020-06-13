@@ -26,12 +26,13 @@ function Detalle(props) {
       .listGET("/api/noticiadetalles/" + props.match.params.id)
       .then((res) => {
         //console.log(res);
-        if (mounted) {
-          setTxNoticia(res.txNoticia);
-          setVlImage(res.idNoticiaHeaderNavigation.vlImage);
-          setTitle(res.idNoticiaHeaderNavigation.nbNoticia);
-          document.title = "CEPV | " + res.idNoticiaHeaderNavigation.nbNoticia;
-          getcategoria(res.idNoticiaHeader, res.fhRegistro);
+        if (mounted && res.code === 200) {
+          setTxNoticia(res.data.TxNoticia);
+          setVlImage(res.data.IdNoticiaHeaderNavigation.VlImage);
+          setTitle(res.data.IdNoticiaHeaderNavigation.NbNoticia);
+          document.title =
+            "CEPV | " + res.data.IdNoticiaHeaderNavigation.NbNoticia;
+          getcategoria(res.data.IdNoticiaHeader, res.data.FhRegistro);
           setloading(false);
         }
       })
@@ -49,10 +50,16 @@ function Detalle(props) {
       .listGET("/api/categorias/" + nbNoticia)
       .then((res) => {
         //console.log(res);
-        setSubtitle(
-          f.getFecha() + " | " + res[0].tpCategoria + " | " + res[0].nbCategoria
-        );
-        setCatHeader(res[0].nbCategoriaHeader);
+        if (res.code === 200) {
+          setSubtitle(
+            f.getFecha() +
+              " | " +
+              res.data[0].TpCategoria +
+              " | " +
+              res.data[0].NbCategoria
+          );
+          setCatHeader(res.data[0].NbCategoriaHeader);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -76,7 +83,7 @@ function Detalle(props) {
                   className="mt-4 mb-2"
                   color="primary"
                   onClick={() => {
-                    props.history.push("/noticias/recientes-noti");
+                    props.history.push("/noticias/recientes-noticias");
                     document.title = "Centro Educativo Planeta Verde";
                   }}
                 >

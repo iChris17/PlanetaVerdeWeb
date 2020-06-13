@@ -27,8 +27,9 @@ const Noticia = (props) => {
     req
       .listGET("/api/categorias?tipo=articulo")
       .then((res) => {
-        if (mounted) {
-          setCategoriasArticulo(res);
+        //console.log(res)
+        if (mounted && res.code===200) {
+          setCategoriasArticulo(res.data);
         }
       })
       .catch((err) => {
@@ -38,8 +39,9 @@ const Noticia = (props) => {
     req
       .listGET("/api/categorias?tipo=noticia")
       .then((res) => {
-        if (mounted) {
-          setCategoriasNoticia(res);
+        if (mounted && res.code===200) {
+          //console.log(res)
+          setCategoriasNoticia(res.data);
           setLoading(false);
         }
       })
@@ -53,15 +55,15 @@ const Noticia = (props) => {
   const NombreCategoria = (url) => {
     for (let index = 0; index < categoriasNoticia.length; index++) {
       const categoria = categoriasNoticia[index];
-      if (url === categoria.nbCategoriaHeader) {
-        return categoria.nbCategoria;
+      if (url === categoria.NbCategoriaHeader) {
+        return categoria.NbCategoria;
       }
     }
 
     for (let index = 0; index < categoriasArticulo.length; index++) {
       const categoria = categoriasArticulo[index];
-      if (url === categoria.nbCategoriaHeader) {
-        return categoria.nbCategoria;
+      if (url === categoria.NbCategoriaHeader) {
+        return categoria.NbCategoria;
       }
     }
   };
@@ -89,23 +91,23 @@ const Noticia = (props) => {
                             action
                             onClick={() => {
                               props.history.push(
-                                "/noticias/" + u.nbCategoriaHeader
+                                "/noticias/" + u.NbCategoriaHeader
                               );
                             }}
                             active={
-                              u.nbCategoriaHeader ===
+                              u.NbCategoriaHeader ===
                               props.match.params.categoria
                                 ? true
                                 : false
                             }
                             color={
-                              u.nbCategoriaHeader ===
+                              u.NbCategoriaHeader ===
                               props.match.params.categoria
                                 ? "success"
                                 : ""
                             }
                           >
-                            {u.nbCategoria}
+                            {u.NbCategoria}
                           </ListGroupItem>
                         );
                       })}
@@ -118,23 +120,23 @@ const Noticia = (props) => {
                             action
                             onClick={() => {
                               props.history.push(
-                                "/noticias/" + u.nbCategoriaHeader
+                                "/noticias/" + u.NbCategoriaHeader
                               );
                             }}
                             active={
-                              u.nbCategoriaHeader ===
+                              u.NbCategoriaHeader ===
                               props.match.params.categoria
                                 ? true
                                 : false
                             }
                             color={
-                              u.nbCategoriaHeader ===
+                              u.NbCategoriaHeader ===
                               props.match.params.categoria
                                 ? "success"
                                 : ""
                             }
                           >
-                            {u.nbCategoria}
+                            {u.NbCategoria}
                           </ListGroupItem>
                         );
                       })}
