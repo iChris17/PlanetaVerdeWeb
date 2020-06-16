@@ -1,15 +1,14 @@
 import React from "react";
 
 // reactstrap components
-import { Button, Container } from "reactstrap";
+import { Container } from "reactstrap";
 
 // core components
 
-function LandingPageHeader(props) {
-
+function LandingPageHeader() {
   return (
     <>
-      <div className="page-header">
+      <div className="page-header page-header-small">
         <div
           className="page-header-image"
           style={{
@@ -19,14 +18,8 @@ function LandingPageHeader(props) {
         ></div>
         <div className="content-center">
           <Container>
-            {props.screen === "Inicio" ? (
-              <h2 className="title">Centro Educativo Planeta Verde</h2>
-            ) : (
-              <h2 className="title">{props.screen}</h2>
-            )}
-            <h4 className="subtitle">
-              <i>"La naturaleza es una inspiración para una buena educación"</i>
-            </h4>
+            <h2 className="title">Administrador CEPV</h2>
+
             <div className="content-end brand">
               <img
                 alt="..."
@@ -35,20 +28,6 @@ function LandingPageHeader(props) {
                 width="64px"
                 height="64px"
               ></img>
-            </div>
-            <div className="text-center">
-              <p>fb.com/planetaverde.edu.ni</p>
-              <Button
-                className="btn-icon btn-round"
-                color="info"
-                href="https://www.fb.com/planetaverde.edu.ni/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open("https://www.fb.com/planetaverde.edu.ni");
-                }}
-              >
-                <i className="fab fa-facebook-square"></i>
-              </Button>
             </div>
           </Container>
         </div>
