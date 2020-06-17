@@ -1,60 +1,61 @@
-import React from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import Articulos from "./Articulos";
 
 const Example = (props) => {
+  const [totalPages, setTotalPages] = useState([]);
+  const dataPerPage = 3;
+  const [activePage, setActivePage] = useState(1);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (mounted) {
+      let array = [];
+      for (let index = 0; index < props.data.length / dataPerPage; index++) {
+        array.push(index);
+      }
+      setTotalPages(array);
+      setData(props.data);
+    }
+
+    return () => (mounted = false);
+  }, [props.data]);
+
   return (
-    <Pagination
-      className="pagination pagination-success"
-      listClassName="pagination-success"
-    >
-      <PaginationItem>
-        <PaginationLink
-          aria-label="Previous"
-          href="#pablo"
-          onClick={(e) => e.preventDefault()}
-        >
-          <span aria-hidden={true}>
-            <i aria-hidden={true} className="fa fa-angle-double-left"></i>
-          </span>
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem className="active">
-        <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-          1
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-          2
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-          3
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-          4
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-          5
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink
-          aria-label="Next"
-          href="#pablo"
-          onClick={(e) => e.preventDefault()}
-        >
-          <span aria-hidden={true}>
-            <i aria-hidden={true} className="fa fa-angle-double-right"></i>
-          </span>
-        </PaginationLink>
-      </PaginationItem>
-    </Pagination>
+    <Fragment>
+      <Articulos
+        data={data.slice(
+          (activePage - 1) * dataPerPage,
+          activePage * dataPerPage
+        )}
+        history={props.history}
+      />
+      <Pagination
+        className="pagination pagination-success"
+        listClassName="pagination-success"
+      >
+        {totalPages.map((i) => {
+          return (
+            <PaginationItem
+              className={activePage === i + 1 ? "active" : ""}
+              key={i}
+            >
+              <PaginationLink
+                href=" "
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActivePage(i + 1);
+                }}
+              >
+                {i + 1}
+              </PaginationLink>
+            </PaginationItem>
+          );
+        })}
+      </Pagination>
+    </Fragment>
   );
 };
 

@@ -109,6 +109,9 @@ const Noticia = (props) => {
                             tag="button"
                             action
                             onClick={() => {
+                              setIndSearch(false);
+                              setVlBusqueda("");
+                              setDataBusqueda(null)
                               props.history.push(
                                 "/noticias/" + u.NbCategoriaHeader
                               );
@@ -138,6 +141,9 @@ const Noticia = (props) => {
                             tag="button"
                             action
                             onClick={() => {
+                              setIndSearch(false);
+                              setVlBusqueda("");
+                              setDataBusqueda(null)
                               props.history.push(
                                 "/noticias/" + u.NbCategoriaHeader
                               );
