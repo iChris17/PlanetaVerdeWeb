@@ -32,14 +32,14 @@ function ExamplesNavbar(props) {
           <Collapse className="justify-content-end" isOpen={isOpen} navbar>
             <Nav navbar fill>
               <NavItem>
-                <NavLink to="/admin" tag={Link}>
+                <NavLink to="/login" tag={Link}>
                   <h5
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
                     }}
                   >
-                    <strong>Administrador de Noticias</strong>
+                    <strong>Cerrar sesión</strong>
                   </h5>
                 </NavLink>
               </NavItem>

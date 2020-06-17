@@ -12,6 +12,7 @@ import "./assets/demo/nucleo-icons-page-styles.css";
 import LandingPage from "./views/LandingPage.js";
 import Navbar from "./components/Navbars/Navbar";
 import Footer from "./components/Footers/DefaultFooter";
+import Login from "./components/Login/LoginPage";
 
 export const history = createBrowserHistory();
 
@@ -25,6 +26,14 @@ ReactDOM.render(
   <Router history={history}>
     <Switch>
       <Route
+        path="/login"
+        render={(props) => (
+          <React.Fragment>
+            <Login {...props} />
+          </React.Fragment>
+        )}
+      />
+      <Route
         path="/admin"
         render={(props) => (
           <React.Fragment>
@@ -34,7 +43,7 @@ ReactDOM.render(
           </React.Fragment>
         )}
       />
-      <Redirect from="/" to="/admin" />
+      <Redirect from="/" to="/login" />
     </Switch>
   </Router>,
   document.getElementById("root")
