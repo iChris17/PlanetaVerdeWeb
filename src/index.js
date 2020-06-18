@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
-import { Route, Switch, Redirect, Router } from "react-router-dom";
+import { Route, Switch, Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 // styles for this kit
@@ -10,9 +10,8 @@ import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
 
 import LandingPage from "./views/LandingPage.js";
-import Navbar from "./components/Navbars/Navbar";
-import Footer from "./components/Footers/DefaultFooter";
 import Login from "./components/Login/LoginPage";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 export const history = createBrowserHistory();
 
@@ -26,25 +25,21 @@ ReactDOM.render(
   <Router history={history}>
     <Switch>
       <Route
-        path="/login"
+        exact
+        path="/"
         render={(props) => (
-          <React.Fragment>
+          <Fragment>
             <Login {...props} />
-          </React.Fragment>
+          </Fragment>
         )}
       />
-      <Route
-        path="/admin"
-        render={(props) => (
-          <React.Fragment>
-            <Navbar {...props} />
-            <LandingPage {...props} />
-            <Footer />
-          </React.Fragment>
-        )}
-      />
-      <Redirect from="/" to="/login" />
     </Switch>
+    <PrivateRoutes
+      exact
+      path="/admin"
+      auth={localStorage.getItem("validateUser") !== null ? true : false}
+      component={LandingPage}
+    />
   </Router>,
   document.getElementById("root")
 );

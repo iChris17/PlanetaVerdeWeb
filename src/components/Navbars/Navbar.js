@@ -32,10 +32,11 @@ function ExamplesNavbar(props) {
           <Collapse className="justify-content-end" isOpen={isOpen} navbar>
             <Nav navbar fill>
               <NavItem>
-                <NavLink to="/login" tag={Link}>
+                <NavLink to="/" tag={Link}>
                   <h5
                     className="text-black"
                     onClick={() => {
+                      localStorage.removeItem("validateUser");
                       setIsOpen(false);
                     }}
                   >
