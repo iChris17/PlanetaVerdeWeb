@@ -7,7 +7,8 @@ import Request from "../../../service/Request";
 import ShareButtons from "./ShareButtons";
 import BottomSection from "./BottomSection";
 import SideNews from "./SideNews";
-
+import Page400 from "../../../components/404/Page404";
+import Page500 from "../../../components/500/Page500";
 // core components
 
 function Detalle(props) {
@@ -17,6 +18,8 @@ function Detalle(props) {
   const [loading, setloading] = useState(false);
   const [subtitle, setSubtitle] = useState("");
   const [categoriaheader, setCatHeader] = useState("");
+  const [error400, setError400] = useState(false);
+  const [error500, setError500] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -34,10 +37,15 @@ function Detalle(props) {
             "CEPV | " + res.data.IdNoticiaHeaderNavigation.NbNoticia;
           getcategoria(res.data.IdNoticiaHeader, res.data.FhRegistro);
           setloading(false);
+        } else if (res.code === 400) {
+          setError400(true);
+        } else {
+          setError500(true);
         }
       })
       .catch((err) => {
         console.log(err);
+        setError500(true);
       });
 
     return () => (mounted = false);
@@ -68,9 +76,11 @@ function Detalle(props) {
 
   return (
     <>
+      {error400 ? <Page400 /> : null}
+      {error500 ? <Page500 /> : null}
       <div style={{ marginLeft: "3.5rem", marginRight: "3.5rem" }}>
         {loading ? (
-          <Spinner height={"500px"} />
+          <Spinner height={!error400&&!error500?"500px":"0px"} />
         ) : (
           <Row>
             <Col md="9">

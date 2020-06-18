@@ -15,6 +15,7 @@ import {
 import Articulos from "./index.js";
 import Request from "../../service/Request";
 import LandingPageHeader from "../../components/Headers/LandingPageHeader";
+import Page500 from "../../components/500/Page500";
 
 const Noticia = (props) => {
   const [categoriasArticulo, setCategoriasArticulo] = useState([]);
@@ -23,6 +24,7 @@ const Noticia = (props) => {
   const [indSearch, setIndSearch] = useState(false);
   const [vlBusqueda, setVlBusqueda] = useState("");
   const [dataBusqueda, setDataBusqueda] = useState(null);
+  const [error500, setError500] = useState(false);
   //console.log(props);
   useEffect(() => {
     let mounted = true;
@@ -33,10 +35,13 @@ const Noticia = (props) => {
         //console.log(res)
         if (mounted && res.code === 200) {
           setCategoriasArticulo(res.data);
+        } else if (res.code === 500) {
+          setError500(true);
         }
       })
       .catch((err) => {
         console.log(err);
+        setError500(true);
       });
 
     req
@@ -46,10 +51,13 @@ const Noticia = (props) => {
           //console.log(res)
           setCategoriasNoticia(res.data);
           setLoading(false);
+        } else if (res.code === 500) {
+          setError500(true);
         }
       })
       .catch((err) => {
         console.log(err);
+        setError500(true);
       });
 
     return () => (mounted = false);
@@ -84,133 +92,138 @@ const Noticia = (props) => {
       })
       .catch((err) => {
         console.log(err);
+        setError500(true);
       });
   };
 
   return (
     <Fragment>
-      <div className="wrapper">
-        <LandingPageHeader screen={"Noticias"} />
-        <div className="section section-about-us">
-          <Row>
-            <Col md="3" className="ml-4">
-              <h3 className="text-primary title">Categorías</h3>
-              <Card>
-                <CardBody>
-                  {loading ? (
-                    <Spinner />
-                  ) : (
-                    <ListGroup>
-                      <h5 className="ml-1">Noticias</h5>
-                      {categoriasNoticia.map((u, i) => {
-                        return (
-                          <ListGroupItem
-                            key={i}
-                            tag="button"
-                            action
-                            onClick={() => {
-                              setIndSearch(false);
-                              setVlBusqueda("");
-                              setDataBusqueda(null)
-                              props.history.push(
-                                "/noticias/" + u.NbCategoriaHeader
-                              );
-                            }}
-                            active={
-                              u.NbCategoriaHeader ===
-                              props.match.params.categoria
-                                ? true
-                                : false
-                            }
-                            color={
-                              u.NbCategoriaHeader ===
-                              props.match.params.categoria
-                                ? "success"
-                                : ""
-                            }
-                          >
-                            {u.NbCategoria}
-                          </ListGroupItem>
-                        );
-                      })}
-                      <h5 className="ml-1 mt-4">Artículo</h5>
-                      {categoriasArticulo.map((u, i) => {
-                        return (
-                          <ListGroupItem
-                            key={i}
-                            tag="button"
-                            action
-                            onClick={() => {
-                              setIndSearch(false);
-                              setVlBusqueda("");
-                              setDataBusqueda(null)
-                              props.history.push(
-                                "/noticias/" + u.NbCategoriaHeader
-                              );
-                            }}
-                            active={
-                              u.NbCategoriaHeader ===
-                              props.match.params.categoria
-                                ? true
-                                : false
-                            }
-                            color={
-                              u.NbCategoriaHeader ===
-                              props.match.params.categoria
-                                ? "success"
-                                : ""
-                            }
-                          >
-                            {u.NbCategoria}
-                          </ListGroupItem>
-                        );
-                      })}
-                    </ListGroup>
-                  )}
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md="6">
-              <h3 className="text-primary title">
-                {!indSearch
-                  ? NombreCategoria(props.match.params.categoria)
-                  : "Resultados de Busqueda"}
-              </h3>
-              <Articulos
-                history={props.history}
-                match={props.match}
-                busqueda={dataBusqueda}
-              />
-            </Col>
-            <Col className="mr-4">
-              <h3 className="text-primary title">Buscar</h3>
-              <Card>
-                <CardBody>
-                  <InputGroup>
-                    <InputGroupAddon addonType="prepend">
-                      <Button
-                        color="primary"
-                        onClick={() => {
-                          buscarNoticia();
+      {error500 ? (
+        <Page500 />
+      ) : (
+        <div className="wrapper">
+          <LandingPageHeader screen={"Noticias"} />
+          <div className="section section-about-us">
+            <Row>
+              <Col md="3" className="ml-4">
+                <h3 className="text-primary title">Categorías</h3>
+                <Card>
+                  <CardBody>
+                    {loading ? (
+                      <Spinner />
+                    ) : (
+                      <ListGroup>
+                        <h5 className="ml-1">Noticias</h5>
+                        {categoriasNoticia.map((u, i) => {
+                          return (
+                            <ListGroupItem
+                              key={i}
+                              tag="button"
+                              action
+                              onClick={() => {
+                                setIndSearch(false);
+                                setVlBusqueda("");
+                                setDataBusqueda(null);
+                                props.history.push(
+                                  "/noticias/" + u.NbCategoriaHeader
+                                );
+                              }}
+                              active={
+                                u.NbCategoriaHeader ===
+                                props.match.params.categoria
+                                  ? true
+                                  : false
+                              }
+                              color={
+                                u.NbCategoriaHeader ===
+                                props.match.params.categoria
+                                  ? "success"
+                                  : ""
+                              }
+                            >
+                              {u.NbCategoria}
+                            </ListGroupItem>
+                          );
+                        })}
+                        <h5 className="ml-1 mt-4">Artículo</h5>
+                        {categoriasArticulo.map((u, i) => {
+                          return (
+                            <ListGroupItem
+                              key={i}
+                              tag="button"
+                              action
+                              onClick={() => {
+                                setIndSearch(false);
+                                setVlBusqueda("");
+                                setDataBusqueda(null);
+                                props.history.push(
+                                  "/noticias/" + u.NbCategoriaHeader
+                                );
+                              }}
+                              active={
+                                u.NbCategoriaHeader ===
+                                props.match.params.categoria
+                                  ? true
+                                  : false
+                              }
+                              color={
+                                u.NbCategoriaHeader ===
+                                props.match.params.categoria
+                                  ? "success"
+                                  : ""
+                              }
+                            >
+                              {u.NbCategoria}
+                            </ListGroupItem>
+                          );
+                        })}
+                      </ListGroup>
+                    )}
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col md="6">
+                <h3 className="text-primary title">
+                  {!indSearch
+                    ? NombreCategoria(props.match.params.categoria)
+                    : "Resultados de Busqueda"}
+                </h3>
+                <Articulos
+                  history={props.history}
+                  match={props.match}
+                  busqueda={dataBusqueda}
+                />
+              </Col>
+              <Col className="mr-4">
+                <h3 className="text-primary title">Buscar</h3>
+                <Card>
+                  <CardBody>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <Button
+                          color="primary"
+                          onClick={() => {
+                            buscarNoticia();
+                          }}
+                        >
+                          <i className="fas fa-search"></i>
+                        </Button>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Buscar"
+                        value={vlBusqueda}
+                        onChange={(e) => {
+                          setVlBusqueda(e.target.value);
                         }}
-                      >
-                        <i className="fas fa-search"></i>
-                      </Button>
-                    </InputGroupAddon>
-                    <Input
-                      placeholder="Buscar"
-                      value={vlBusqueda}
-                      onChange={(e) => {
-                        setVlBusqueda(e.target.value);
-                      }}
-                    />
-                  </InputGroup>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+                      />
+                    </InputGroup>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </div>
         </div>
-      </div>
+      )}
     </Fragment>
   );
 };
