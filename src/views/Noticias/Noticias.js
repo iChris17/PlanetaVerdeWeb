@@ -11,6 +11,7 @@ import {
   Input,
   Button,
   Spinner,
+  Label,
 } from "reactstrap";
 import Articulos from "./index.js";
 import Request from "../../service/Request";
@@ -103,9 +104,9 @@ const Noticia = (props) => {
       ) : (
         <div className="wrapper">
           <LandingPageHeader screen={"Noticias"} />
-          <div className="section section-about-us">
+          <div className="section section-about-us mr-4 ml-4">
             <Row>
-              <Col md="3" className="ml-4">
+              <Col lg="3" className="">
                 <h3 className="text-primary title">Categorías</h3>
                 <Card>
                   <CardBody>
@@ -113,7 +114,7 @@ const Noticia = (props) => {
                       <Spinner />
                     ) : (
                       <ListGroup>
-                        <h5 className="ml-1">Noticias</h5>
+                        <Label className="ml-1 h5 text-primary"><strong>Noticias</strong></Label>
                         {categoriasNoticia.map((u, i) => {
                           return (
                             <ListGroupItem
@@ -145,7 +146,7 @@ const Noticia = (props) => {
                             </ListGroupItem>
                           );
                         })}
-                        <h5 className="ml-1 mt-4">Artículo</h5>
+                        <Label className="ml-1 mt-4 h5 text-primary"><strong>Artículo</strong></Label>
                         {categoriasArticulo.map((u, i) => {
                           return (
                             <ListGroupItem
@@ -182,7 +183,7 @@ const Noticia = (props) => {
                   </CardBody>
                 </Card>
               </Col>
-              <Col md="6">
+              <Col lg="6">
                 <h3 className="text-primary title">
                   {!indSearch
                     ? NombreCategoria(props.match.params.categoria)
@@ -194,7 +195,7 @@ const Noticia = (props) => {
                   busqueda={dataBusqueda}
                 />
               </Col>
-              <Col className="mr-4">
+              <Col lg="3"className="">
                 <h3 className="text-primary title">Buscar</h3>
                 <Card>
                   <CardBody>
@@ -205,6 +206,8 @@ const Noticia = (props) => {
                           onClick={() => {
                             buscarNoticia();
                           }}
+                          className=""
+                          style={{height:"100%"}}
                         >
                           <i className="fas fa-search"></i>
                         </Button>

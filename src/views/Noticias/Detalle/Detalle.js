@@ -28,7 +28,7 @@ function Detalle(props) {
     req
       .listGET("/api/noticiadetalles/" + props.match.params.id)
       .then((res) => {
-        //console.log(res);
+        console.log(res);
         if (mounted && res.code === 200) {
           setTxNoticia(res.data.TxNoticia);
           setVlImage(res.data.IdNoticiaHeaderNavigation.VlImage);
@@ -78,17 +78,19 @@ function Detalle(props) {
     <>
       {error400 ? <Page400 /> : null}
       {error500 ? <Page500 /> : null}
-      <div style={{ marginLeft: "3.5rem", marginRight: "3.5rem" }}>
+      <div className="ml-4 mr-4">
         {loading ? (
-          <Spinner height={!error400&&!error500?"500px":"0px"} />
+          <Spinner height={!error400 && !error500 ? "500px" : "0px"} />
         ) : (
           <Row>
-            <Col md="9">
+            <Col xl="9">
               <Fragment>
-                <h2 className="title text-center">{title}</h2>
+                <h2 className="title text-center">
+                  <strong>{title}</strong>
+                </h2>
                 <hr></hr>
                 <h6 className="mt-2 mb-2">{subtitle}</h6>
-                <img alt="" src={vlImage} width="100%" height="25%" />
+                <img alt="" src={vlImage} width="100%" height="auto" />
                 <Button
                   className="mt-4 mb-2"
                   color="primary"
@@ -110,7 +112,9 @@ function Detalle(props) {
                 />
               </Fragment>
             </Col>
-            <SideNews history={props.history} />
+            <Col xl="3">
+              <SideNews history={props.history} />
+            </Col>
           </Row>
         )}
       </div>

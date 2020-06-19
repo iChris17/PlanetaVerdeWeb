@@ -13,7 +13,7 @@ const BottomSection = (props) => {
       req
         .listGET("/api/noticias/" + props.categoria + "?seccion=4")
         .then((res) => {
-          if (mounted&&res.code===200) {
+          if (mounted && res.code === 200) {
             //console.log(props.categoria);
             setDataNews(res.data);
             setLoading(false);
@@ -34,11 +34,11 @@ const BottomSection = (props) => {
         {!loading ? (
           dataNews.map((u, i) => {
             return (
-              <Col md="3" key={i}>
+              <Col sm="6" xl="3" key={i}>
                 <Card>
                   <img width="100%" height="150px" src={u.VlImage} alt="" />
                   <hr></hr>
-                  <h6 className=" ml-2 mr-2 mb-3 text-center">
+                  <h6 className="mb-3 text-center">
                     <a
                       href=" "
                       onClick={(e) => {

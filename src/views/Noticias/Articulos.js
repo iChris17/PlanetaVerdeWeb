@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Card, CardBody, Row, Col, Button } from "reactstrap";
+import { Card, CardBody, Row, Col, Button, Label } from "reactstrap";
 import Request from "../../service/Request";
 
 const Articulos = (props) => {
@@ -26,16 +26,16 @@ const Articulos = (props) => {
         return (
           <Card key={i}>
             <CardBody>
-              <h3 className="text-left">{u.NbNoticia}</h3>
+              <Label className="text-left h4">{u.NbNoticia}</Label>
               <hr></hr>
               <Row>
-                <Col md="4">
-                  <img alt="" src={u.VlImage} height="auto" width="100%" />
+                <Col sm="4">
+                  <img className="mb-3" alt="" src={u.VlImage} height="auto" width="100%" />
                 </Col>
-                <Col md="8">
-                  <p className="text-justify ">
-                    <strong>{u.DeNoticia}</strong>
-                  </p>
+                <Col sm="8">
+                  <Label className="text-justify">
+                    {u.DeNoticia}
+                  </Label>
                 </Col>
               </Row>
               <hr></hr>
