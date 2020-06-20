@@ -47,6 +47,7 @@ const Example = (props) => {
                 onClick={(e) => {
                   e.preventDefault();
                   setActivePage(i + 1);
+                  window.scrollTo(0,window.innerHeight)
                 }}
               >
                 {i + 1}
