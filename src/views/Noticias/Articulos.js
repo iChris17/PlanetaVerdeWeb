@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Card, CardBody, Row, Col, Button, Label } from "reactstrap";
 import Request from "../../service/Request";
+import Fecha from "./Detalle/Fecha";
 
 const Articulos = (props) => {
   const getcategoria = async (nbNoticia) => {
@@ -20,22 +21,38 @@ const Articulos = (props) => {
 
     return nbCategoriaHeader;
   };
+
+  const getDate = (fecha) => {
+    const f = new Fecha(fecha);
+    return f.getFecha();
+  };
+
   return (
     <Fragment>
       {props.data.map((u, i) => {
         return (
           <Card key={i}>
             <CardBody>
-              <Label className="text-left h4">{u.NbNoticia}</Label>
+              <Label className="text-center">
+                {getDate(u.FhRegistro)}
+              </Label>
+
+              <Label className="text-left h4">
+                <strong>{u.NbNoticia}</strong>
+              </Label>
               <hr></hr>
               <Row>
                 <Col sm="4">
-                  <img className="mb-3" alt="" src={u.VlImage} height="auto" width="100%" />
+                  <img
+                    className="mb-3"
+                    alt=""
+                    src={u.VlImage}
+                    height="auto"
+                    width="100%"
+                  />
                 </Col>
                 <Col sm="8">
-                  <Label className="text-justify">
-                    {u.DeNoticia}
-                  </Label>
+                  <Label className="text-justify">{u.DeNoticia}</Label>
                 </Col>
               </Row>
               <hr></hr>

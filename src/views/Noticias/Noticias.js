@@ -16,6 +16,9 @@ import {
 import Articulos from "./index.js";
 import Request from "../../service/Request";
 import LandingPageHeader from "../../components/Headers/LandingPageHeader";
+import Mapa from "../../components/Mapa/index";
+import Calendar from "react-calendar";
+import "./style/Calendar.css";
 import Page500 from "../../components/500/Page500";
 
 const Noticia = (props) => {
@@ -114,7 +117,9 @@ const Noticia = (props) => {
                       <Spinner />
                     ) : (
                       <ListGroup>
-                        <Label className="ml-1 h5 text-primary"><strong>Noticias</strong></Label>
+                        <Label className="ml-1 h5 text-primary">
+                          <strong>Noticias</strong>
+                        </Label>
                         {categoriasNoticia.map((u, i) => {
                           return (
                             <ListGroupItem
@@ -146,7 +151,9 @@ const Noticia = (props) => {
                             </ListGroupItem>
                           );
                         })}
-                        <Label className="ml-1 mt-4 h5 text-primary"><strong>Artículo</strong></Label>
+                        <Label className="ml-1 mt-4 h5 text-primary">
+                          <strong>Artículo</strong>
+                        </Label>
                         {categoriasArticulo.map((u, i) => {
                           return (
                             <ListGroupItem
@@ -195,7 +202,7 @@ const Noticia = (props) => {
                   busqueda={dataBusqueda}
                 />
               </Col>
-              <Col lg="3"className="">
+              <Col lg="3" className="">
                 <h3 className="text-primary title">Buscar</h3>
                 <Card>
                   <CardBody>
@@ -207,7 +214,7 @@ const Noticia = (props) => {
                             buscarNoticia();
                           }}
                           className=""
-                          style={{height:"100%"}}
+                          style={{ height: "100%" }}
                         >
                           <i className="fas fa-search"></i>
                         </Button>
@@ -220,6 +227,43 @@ const Noticia = (props) => {
                         }}
                       />
                     </InputGroup>
+                  </CardBody>
+                </Card>
+                <h3 className="text-primary title">Calendario</h3>
+                <Card>
+                  <CardBody>
+                    <Calendar />
+                  </CardBody>
+                </Card>
+
+                <h3 className="text-primary title">Contacto</h3>
+                <Card>
+                  <CardBody>
+                    <p>
+                      <i className="fas fa-mobile-alt"> (505) 8778-7321</i>
+                    </p>
+
+                    <p>
+                      <i className="fas fa-envelope">
+                        <a
+                          href="mailto:info@planetaverde.edu.ni"
+                          className="text-black"
+                        >
+                          info@planetaverde.edu.ni
+                        </a>
+                      </i>
+                    </p>
+
+                    <p>
+                      <i className="fas fa-map-marker-alt">
+                        {" "}
+                        Barrio Santa Ana, del arbolito 1c oeste, 2 1/2c sur.
+                        Managua, Nicaragua.
+                      </i>
+                    </p>
+                    <div style={{ height: "300px" }}>
+                      <Mapa />
+                    </div>
                   </CardBody>
                 </Card>
               </Col>

@@ -8,7 +8,7 @@ const Maps = () => {
   const latitud = 12.155481;
   const position = [latitud, longitud];
   return (
-    <Map center={position} zoom={17}>
+    <Map center={position} zoom={16}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
