@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import { Route, Switch, Redirect, Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
@@ -10,6 +10,8 @@ import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
 //import "./assets/css/typography.css";
 
+import PrivateRoutes from "./routes/PrivateRoutes";
+import Login from "./components/Login/Login";
 import LandingPage from "./views/LandingPage.js";
 import Nosotros from "./views/Nosotros.js";
 import Contacto from "./views/Contacto.js";
@@ -17,6 +19,7 @@ import Noticias from "./views/Noticias/Noticias.js";
 import Navbar from "./components/Navbars/Navbar";
 import Footer from "./components/Footers/DefaultFooter";
 import DetalleNoticia from "./views/Noticias/Detalle/Detalle";
+import Admin from "./views/Admin/Admin"
 
 export const history = createBrowserHistory();
 
@@ -36,6 +39,16 @@ ReactDOM.render(
   <Router history={history}>
     <Switch>
       <Route
+        exact
+        path="/login"
+        render={(props) => (
+          <Fragment>
+            <Login {...props} />
+          </Fragment>
+        )}
+      />
+      <Route
+        exact
         path="/inicio"
         render={(props) => (
           <React.Fragment>
@@ -46,6 +59,7 @@ ReactDOM.render(
         )}
       />
       <Route
+        exact
         path="/nosotros"
         render={(props) => (
           <React.Fragment>
@@ -56,6 +70,7 @@ ReactDOM.render(
         )}
       />
       <Route
+        exact
         path="/contacto"
         render={(props) => (
           <React.Fragment>
@@ -87,8 +102,15 @@ ReactDOM.render(
           </React.Fragment>
         )}
       />
-      <Redirect from="/" to="/inicio" />
+      <Route exact path="/">
+        <Redirect to="/inicio" />
+      </Route>
     </Switch>
+    <PrivateRoutes
+      exact
+      path="/admin"
+      component={Admin}
+    />
   </Router>,
   document.getElementById("root")
 );
