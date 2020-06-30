@@ -65,7 +65,7 @@ const Head = () => {
       {(value) => {
         const { head, actions } = value;
 
-        const design = isChekedTable ? "table-light" : "table-primary";
+        const design = isChekedTable ? "bg-primary text-white" : "bg-primary text-white";
 
         return (
           <thead>

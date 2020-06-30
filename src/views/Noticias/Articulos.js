@@ -33,10 +33,8 @@ const Articulos = (props) => {
         return (
           <Card key={i}>
             <CardBody>
-              <Label className="text-center">
-                {getDate(u.FhRegistro)}
-              </Label>
-
+              <Label className="text-center">{getDate(u.FhRegistro)}</Label>
+              <br></br>
               <Label className="text-left h4">
                 <strong>{u.NbNoticia}</strong>
               </Label>

@@ -10,7 +10,7 @@ import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
 //import "./assets/css/typography.css";
 
-import PrivateRoutes from "./routes/PrivateRoutes";
+//import PrivateRoutes from "./routes/PrivateRoutes";
 import Login from "./components/Login/Login";
 import LandingPage from "./views/LandingPage.js";
 import Nosotros from "./views/Nosotros.js";
@@ -19,7 +19,7 @@ import Noticias from "./views/Noticias/Noticias.js";
 import Navbar from "./components/Navbars/Navbar";
 import Footer from "./components/Footers/DefaultFooter";
 import DetalleNoticia from "./views/Noticias/Detalle/Detalle";
-import Admin from "./views/Admin/Admin"
+import Admin from "./views/Admin/Admin";
 
 export const history = createBrowserHistory();
 
@@ -102,15 +102,22 @@ ReactDOM.render(
           </React.Fragment>
         )}
       />
-      <Route exact path="/">
+      <Route exact path="/noticias">
+        <Redirect to="/noticias/recientes-noticias" />
+      </Route>
+      <Route
+        exact
+        path="/admin"
+        render={(props) => (
+          <React.Fragment>
+            <Admin {...props} />
+          </React.Fragment>
+        )}
+      />
+      <Route path="/">
         <Redirect to="/inicio" />
       </Route>
     </Switch>
-    <PrivateRoutes
-      exact
-      path="/admin"
-      component={Admin}
-    />
   </Router>,
   document.getElementById("root")
 );
