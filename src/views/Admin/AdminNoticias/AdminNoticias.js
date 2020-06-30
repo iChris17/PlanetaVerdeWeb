@@ -150,6 +150,7 @@ const AdminNoticias = () => {
     ) {
       return false;
     }
+    return true;
   };
 
   const getTable = (value) => {
