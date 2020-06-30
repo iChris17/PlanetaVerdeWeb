@@ -59,7 +59,10 @@ const LandingPage = (props) => {
           <NavbarAdmin {...props} />
           <div className="wrapper">
             <Container>
-              <h2>Bienvenido al Administrador CEPV</h2>
+              <h2 className="title text-center mt-2">
+                Bienvenido al Administrador CEPV
+              </h2>
+              <hr></hr>
               <Nav tabs>
                 {Tabs.map((u, i) => {
                   return (

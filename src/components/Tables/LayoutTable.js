@@ -5,11 +5,11 @@ import { withRouter } from "react-router-dom";
 import { TableProvider } from "../../context/TableContext";
 import CardVista from "../Cards/CardVista";
 import Pagination from "../Pagination/PaginationP";
-import Table from "./TableVistas";
-import Spinner from "../Spinner/Spinner";
+import Table from "./TablesVistas";
+import Spinner from "../Spinner/Spinner"; 
 
 //Servicio
-import Request from "../../services/Request";
+import Request from "../../service/Request";  
 
 class LayoutTable extends Component {
   pathLocal = "";
