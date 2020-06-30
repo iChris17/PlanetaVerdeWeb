@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import {
   Row,
   Col,
@@ -29,6 +29,7 @@ const Noticia = (props) => {
   const [vlBusqueda, setVlBusqueda] = useState("");
   const [dataBusqueda, setDataBusqueda] = useState(null);
   const [error500, setError500] = useState(false);
+  const fileRef = useRef();
   //console.log(props);
   useEffect(() => {
     let mounted = true;
@@ -210,6 +211,7 @@ const Noticia = (props) => {
                       <InputGroupAddon addonType="prepend">
                         <Button
                           color="primary"
+                          ref={fileRef}
                           onClick={() => {
                             buscarNoticia();
                           }}
@@ -224,6 +226,12 @@ const Noticia = (props) => {
                         value={vlBusqueda}
                         onChange={(e) => {
                           setVlBusqueda(e.target.value);
+                        }}
+                        onKeyUp={(e) => {
+                          e.preventDefault();
+                          if (e.keyCode === 13) {
+                            fileRef.current.onClick();
+                          }
                         }}
                       />
                     </InputGroup>
