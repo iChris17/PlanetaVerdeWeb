@@ -11,7 +11,12 @@ const BottomSection = (props) => {
     if (props.categoria !== "") {
       const req = new Request();
       req
-        .listGET("/api/noticias/" + props.categoria + "?seccion=4")
+        .listGET(
+          "/api/noticias/" +
+            props.categoria +
+            "?seccion=4&&idnoticia=" +
+            props.IdNoticiaHeader
+        )
         .then((res) => {
           if (mounted && res.code === 200) {
             //console.log(props.categoria);
@@ -25,7 +30,7 @@ const BottomSection = (props) => {
     }
 
     return () => (mounted = false);
-  }, [props.categoria]);
+  }, [props.categoria, props.IdNoticiaHeader]);
   return (
     <Fragment>
       <h3 className="text-primary title">Puede interesarle</h3>

@@ -109,11 +109,12 @@ function Detalle(props) {
                 <BottomSection
                   categoria={categoriaheader}
                   history={props.history}
+                  IdNoticiaHeader={props.match.params.id}
                 />
               </Fragment>
             </Col>
             <Col xl="3">
-              <SideNews history={props.history} />
+              <SideNews history={props.history} IdNoticiaHeader={props.match.params.id}/>
             </Col>
           </Row>
         )}

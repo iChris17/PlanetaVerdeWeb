@@ -6,13 +6,12 @@ import Spinner from "../../../components/Spinner/Spinner";
 const SideNews = (props) => {
   const [dataNews, setDataNews] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     let mounted = true;
     const req = new Request();
 
     req
-      .listGET("/api/noticias/recientes-noticias?seccion=4")
+      .listGET("/api/noticias/recientes-noticias?seccion=4&&idnoticia="+props.IdNoticiaHeader)
       .then((res) => {
         //console.log(res);
         if (mounted && res.code === 200) {
@@ -25,7 +24,7 @@ const SideNews = (props) => {
       });
 
     return () => (mounted = false);
-  }, []);
+  }, [props.IdNoticiaHeader]);
 
   const getcategoria = async (nbNoticia) => {
     const req = new Request();
