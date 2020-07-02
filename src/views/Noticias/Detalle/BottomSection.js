@@ -37,32 +37,36 @@ const BottomSection = (props) => {
       <hr></hr>
       <Row>
         {!loading ? (
-          dataNews.map((u, i) => {
-            return (
-              <Col sm="6" xl="3" key={i}>
-                <Card>
-                  <img width="100%" height="150px" src={u.VlImage} alt="" />
-                  <hr></hr>
-                  <h6 className="mb-3 text-center">
-                    <a
-                      href=" "
-                      onClick={(e) => {
-                        e.preventDefault();
-                        props.history.push(
-                          "/noticias/" +
-                            props.categoria +
-                            "/" +
-                            u.IdNoticiaHeader
-                        );
-                      }}
-                    >
-                      {u.NbNoticia}
-                    </a>
-                  </h6>
-                </Card>
-              </Col>
-            );
-          })
+          dataNews.length > 0 ? (
+            dataNews.map((u, i) => {
+              return (
+                <Col sm="6" xl="3" key={i}>
+                  <Card>
+                    <img width="100%" height="150px" src={u.VlImage} alt="" />
+                    <hr></hr>
+                    <h6 className="mb-3 text-center">
+                      <a
+                        href=" "
+                        onClick={(e) => {
+                          e.preventDefault();
+                          props.history.push(
+                            "/noticias/" +
+                              props.categoria +
+                              "/" +
+                              u.IdNoticiaHeader
+                          );
+                        }}
+                      >
+                        {u.NbNoticia}
+                      </a>
+                    </h6>
+                  </Card>
+                </Col>
+              );
+            })
+          ) : (
+            <h6 className="text-center">NO HAY DATOS</h6>
+          )
         ) : (
           <Spinner height={"100px"} />
         )}

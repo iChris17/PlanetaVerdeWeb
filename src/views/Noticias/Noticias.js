@@ -89,7 +89,7 @@ const Noticia = (props) => {
     req
       .listGET("/api/noticias/buscar/" + vlBusqueda)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         if (res.code === 200) {
           setIndSearch(true);
           setDataBusqueda(res.data);

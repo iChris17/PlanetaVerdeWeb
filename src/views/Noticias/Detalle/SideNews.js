@@ -11,7 +11,10 @@ const SideNews = (props) => {
     const req = new Request();
 
     req
-      .listGET("/api/noticias/recientes-noticias?seccion=4&&idnoticia="+props.IdNoticiaHeader)
+      .listGET(
+        "/api/noticias/recientes-noticias?seccion=4&&idnoticia=" +
+          props.IdNoticiaHeader
+      )
       .then((res) => {
         //console.log(res);
         if (mounted && res.code === 200) {
@@ -50,31 +53,35 @@ const SideNews = (props) => {
       <hr></hr>
       <Row>
         {!loading ? (
-          dataNews.map((u, i) => {
-            return (
-              <Col sm="6" xl="12" key={i}>
-                <Card>
-                  <img width="100%" height="150px" src={u.VlImage} alt="" />
-                  <hr></hr>
-                  <h6 className="  mb-3 text-center">
-                    <a
-                      href="/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        getcategoria(u.IdNoticiaHeader).then((res) => {
-                          props.history.push(
-                            "/noticias/" + res + "/" + u.IdNoticiaHeader
-                          );
-                        });
-                      }}
-                    >
-                      {u.NbNoticia}
-                    </a>
-                  </h6>
-                </Card>
-              </Col>
-            );
-          })
+          dataNews.length > 0 ? (
+            dataNews.map((u, i) => {
+              return (
+                <Col sm="6" xl="12" key={i}>
+                  <Card>
+                    <img width="100%" height="150px" src={u.VlImage} alt="" />
+                    <hr></hr>
+                    <h6 className="  mb-3 text-center">
+                      <a
+                        href="/"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          getcategoria(u.IdNoticiaHeader).then((res) => {
+                            props.history.push(
+                              "/noticias/" + res + "/" + u.IdNoticiaHeader
+                            );
+                          });
+                        }}
+                      >
+                        {u.NbNoticia}
+                      </a>
+                    </h6>
+                  </Card>
+                </Col>
+              );
+            })
+          ) : (
+            <h6 className="text-center">No hay datos</h6>
+          )
         ) : (
           <Spinner height={"100px"} />
         )}

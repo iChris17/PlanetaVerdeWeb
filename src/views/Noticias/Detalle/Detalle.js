@@ -28,7 +28,7 @@ function Detalle(props) {
     req
       .listGET("/api/noticiadetalles/" + props.match.params.id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         if (mounted && res.code === 200) {
           setTxNoticia(res.data.TxNoticia);
           setVlImage(res.data.IdNoticiaHeaderNavigation.VlImage);

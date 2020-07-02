@@ -96,6 +96,7 @@ function ExamplesNavbar(props) {
             className="navbar-brand"
             onClick={() => {
               props.history.push("/inicio");
+              document.title = "Centro Educativo Planeta Verde";
             }}
           >
             <img src={Logo} height="50px" width="200px" alt="Logo" />
@@ -109,6 +110,7 @@ function ExamplesNavbar(props) {
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Inicio</strong>
@@ -121,6 +123,7 @@ function ExamplesNavbar(props) {
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Nosotros</strong>
@@ -133,6 +136,7 @@ function ExamplesNavbar(props) {
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Noticias</strong>
@@ -145,6 +149,7 @@ function ExamplesNavbar(props) {
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Contacto</strong>
