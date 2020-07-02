@@ -26,7 +26,7 @@ const Noticia = (props) => {
         })
         .then((res) => {
           if (mounted && res.code === 200) {
-            console.log(res);
+            //console.log(res);
             setNoticias(res.data);
             setLoading(false);
           }

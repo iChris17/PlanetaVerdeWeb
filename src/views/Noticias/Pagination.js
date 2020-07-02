@@ -4,7 +4,7 @@ import Articulos from "./Articulos";
 
 const Example = (props) => {
   const [totalPages, setTotalPages] = useState([]);
-  const dataPerPage = 3;
+  const dataPerPage = 5;
   const [activePage, setActivePage] = useState(1);
   const [data, setData] = useState([]);
 

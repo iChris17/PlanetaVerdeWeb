@@ -28,7 +28,7 @@ function Detalle(props) {
     req
       .listGET("/api/noticiadetalles/" + props.match.params.id)
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         if (mounted && res.code === 200) {
           setTxNoticia(res.data.TxNoticia);
           setVlImage(res.data.IdNoticiaHeaderNavigation.VlImage);
@@ -109,11 +109,12 @@ function Detalle(props) {
                 <BottomSection
                   categoria={categoriaheader}
                   history={props.history}
+                  IdNoticiaHeader={props.match.params.id}
                 />
               </Fragment>
             </Col>
             <Col xl="3">
-              <SideNews history={props.history} />
+              <SideNews history={props.history} IdNoticiaHeader={props.match.params.id}/>
             </Col>
           </Row>
         )}
