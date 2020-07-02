@@ -92,10 +92,16 @@ function ExamplesNavbar(props) {
       </div>
       <Navbar className={typeNavbar} color="light" light expand="lg">
         <Container>
-          <div className="navbar-brand" onClick={()=>{props.history.push('/inicio')}}>
+          <div
+            className="navbar-brand"
+            onClick={() => {
+              props.history.push("/inicio");
+              document.title = "Centro Educativo Planeta Verde";
+            }}
+          >
             <img src={Logo} height="50px" width="200px" alt="Logo" />
           </div>
-          <NavbarToggler onClick={toggle} className="border-0" />
+          <NavbarToggler onClick={toggle} className="" />
           <Collapse className="justify-content-end" isOpen={isOpen} navbar>
             <Nav navbar fill>
               <NavItem>
@@ -104,6 +110,7 @@ function ExamplesNavbar(props) {
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Inicio</strong>
@@ -116,6 +123,7 @@ function ExamplesNavbar(props) {
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Nosotros</strong>
@@ -123,11 +131,12 @@ function ExamplesNavbar(props) {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/noticias" tag={Link}>
+                <NavLink to="/noticias/recientes-noticias" tag={Link}>
                   <h5
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Noticias</strong>
@@ -140,6 +149,7 @@ function ExamplesNavbar(props) {
                     className="text-black"
                     onClick={() => {
                       setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
                     }}
                   >
                     <strong>Contacto</strong>

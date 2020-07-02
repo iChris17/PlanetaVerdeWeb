@@ -15,7 +15,7 @@
         cursor: pointer;
         font-size: $font-size-base;
         text-transform: uppercase;
-        background: transparent;
+        background: $white-color;
 
         &:hover,
         &:focus{
