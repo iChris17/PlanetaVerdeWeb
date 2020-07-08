@@ -20,6 +20,7 @@ import Navbar from "./components/Navbars/Navbar";
 import Footer from "./components/Footers/DefaultFooter";
 import DetalleNoticia from "./views/Noticias/Detalle/Detalle";
 import Admin from "./views/Admin/Admin";
+import HelmetData from "./components/Helmet/Helmet";
 
 export const history = createBrowserHistory();
 
@@ -43,6 +44,7 @@ ReactDOM.render(
         path="/login"
         render={(props) => (
           <Fragment>
+            <HelmetData {...props} />
             <Login {...props} />
           </Fragment>
         )}
@@ -52,6 +54,8 @@ ReactDOM.render(
         path="/inicio"
         render={(props) => (
           <React.Fragment>
+            <HelmetData {...props} />
+            <HelmetData {...props} />
             <Navbar {...props} />
             <LandingPage {...props} />
             <Footer />
@@ -63,6 +67,7 @@ ReactDOM.render(
         path="/nosotros"
         render={(props) => (
           <React.Fragment>
+            <HelmetData {...props} />
             <Navbar {...props} />
             <Nosotros {...props} />
             <Footer />
@@ -74,6 +79,7 @@ ReactDOM.render(
         path="/contacto"
         render={(props) => (
           <React.Fragment>
+            <HelmetData {...props} />
             <Navbar {...props} />
             <Contacto {...props} />
             <Footer />
@@ -85,6 +91,7 @@ ReactDOM.render(
         path="/noticias/:categoria"
         render={(props) => (
           <React.Fragment>
+            <HelmetData {...props} />
             <Navbar {...props} />
             <Noticias {...props} />
             <Footer />
@@ -110,6 +117,7 @@ ReactDOM.render(
         path="/admin"
         render={(props) => (
           <React.Fragment>
+            <HelmetData {...props} />
             <Admin {...props} />
           </React.Fragment>
         )}

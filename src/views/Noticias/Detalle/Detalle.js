@@ -9,10 +9,12 @@ import BottomSection from "./BottomSection";
 import SideNews from "./SideNews";
 import Page400 from "../../../components/404/Page404";
 import Page500 from "../../../components/500/Page500";
+import HelmetData from "../../../components/Helmet/Helmet";
 // core components
 
 function Detalle(props) {
   const [vlImage, setVlImage] = useState("");
+  const [deNoticia, setDeNoticia] = useState("");
   const [txNoticia, setTxNoticia] = useState(null);
   const [title, setTitle] = useState("");
   const [loading, setloading] = useState(false);
@@ -33,9 +35,8 @@ function Detalle(props) {
           setTxNoticia(res.data.TxNoticia);
           setVlImage(res.data.IdNoticiaHeaderNavigation.VlImage);
           setTitle(res.data.IdNoticiaHeaderNavigation.NbNoticia);
-          document.title =
-            "CEPV | " + res.data.IdNoticiaHeaderNavigation.NbNoticia;
           getcategoria(res.data.IdNoticiaHeader, res.data.FhRegistro);
+          setDeNoticia(res.data.IdNoticiaHeaderNavigation.DeNoticia);
           setloading(false);
         } else if (res.code === 400) {
           setError400(true);
@@ -83,6 +84,13 @@ function Detalle(props) {
           <Spinner height={!error400 && !error500 ? "500px" : "0px"} />
         ) : (
           <Row>
+            <HelmetData
+              title={"CEPV | " + title}
+              location={props.location}
+              description={deNoticia}
+              quote={title}
+              image={vlImage}
+            ></HelmetData>
             <Col xl="9">
               <Fragment>
                 <h2 className="title text-center">
@@ -96,7 +104,6 @@ function Detalle(props) {
                   color="primary"
                   onClick={() => {
                     props.history.push("/noticias/recientes-noticias");
-                    document.title = "Centro Educativo Planeta Verde";
                   }}
                 >
                   Volver al Menú
@@ -114,7 +121,10 @@ function Detalle(props) {
               </Fragment>
             </Col>
             <Col xl="3">
-              <SideNews history={props.history} IdNoticiaHeader={props.match.params.id}/>
+              <SideNews
+                history={props.history}
+                IdNoticiaHeader={props.match.params.id}
+              />
             </Col>
           </Row>
         )}
