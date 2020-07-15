@@ -38,13 +38,13 @@ history.listen((location, action) => {
 
 ReactDOM.render(
   <Router history={history}>
+    <HelmetData location={history.location} />
     <Switch>
       <Route
         exact
         path="/login"
         render={(props) => (
           <Fragment>
-            <HelmetData {...props} />
             <Login {...props} />
           </Fragment>
         )}
@@ -54,8 +54,6 @@ ReactDOM.render(
         path="/inicio"
         render={(props) => (
           <React.Fragment>
-            <HelmetData {...props} />
-            <HelmetData {...props} />
             <Navbar {...props} />
             <LandingPage {...props} />
             <Footer />
@@ -67,7 +65,6 @@ ReactDOM.render(
         path="/nosotros"
         render={(props) => (
           <React.Fragment>
-            <HelmetData {...props} />
             <Navbar {...props} />
             <Nosotros {...props} />
             <Footer />
@@ -79,7 +76,6 @@ ReactDOM.render(
         path="/contacto"
         render={(props) => (
           <React.Fragment>
-            <HelmetData {...props} />
             <Navbar {...props} />
             <Contacto {...props} />
             <Footer />
@@ -91,7 +87,6 @@ ReactDOM.render(
         path="/noticias/:categoria"
         render={(props) => (
           <React.Fragment>
-            <HelmetData {...props} />
             <Navbar {...props} />
             <Noticias {...props} />
             <Footer />
@@ -117,7 +112,6 @@ ReactDOM.render(
         path="/admin"
         render={(props) => (
           <React.Fragment>
-            <HelmetData {...props} />
             <Admin {...props} />
           </React.Fragment>
         )}

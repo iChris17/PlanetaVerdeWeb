@@ -85,7 +85,7 @@ function Detalle(props) {
         ) : (
           <Row>
             <HelmetData
-              title={"CEPV | " + title}
+              title={title}
               location={props.location}
               description={deNoticia}
               quote={title}
