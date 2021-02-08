@@ -5,6 +5,8 @@ import { Container, Row, Col, Label } from "reactstrap";
 
 // core components
 import LandingPageHeader from "../components/Headers/LandingPageHeader.js";
+//import Carrousel from "../components/Carrousel/Carrousel";
+//import Carrousel from "../components/Carrousel/Carrousel";
 import Plataformas from "./Virtual.js";
 
 function LandingPage() {
@@ -37,7 +39,6 @@ function LandingPage() {
                 </h5>
               </Col>
             </Row>
-            <div className="separator separator-primary"></div>
             <Row>
               <Col className="ml-auto mr-auto text-left">
                 <h2 className="title">Instalaciones</h2>

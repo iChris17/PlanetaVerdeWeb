@@ -22,6 +22,9 @@ import DetalleNoticia from "./views/Noticias/Detalle/Detalle";
 import Admin from "./views/Admin/Admin";
 import HelmetData from "./components/Helmet/Helmet";
 
+//import Prematricula from "./views/MenusEspeciales/Prematricula";
+import Horario from "./views/MenusEspeciales/Horario"
+
 export const history = createBrowserHistory();
 
 history.listen((location, action) => {
@@ -46,6 +49,17 @@ ReactDOM.render(
         render={(props) => (
           <Fragment>
             <Login {...props} />
+          </Fragment>
+        )}
+      />
+      <Route
+        exact
+        path="/horario-2021"
+        render={(props) => (
+          <Fragment>
+            <Navbar {...props} />
+            <Horario {...props} />
+            <Footer />
           </Fragment>
         )}
       />

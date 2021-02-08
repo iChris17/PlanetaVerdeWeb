@@ -118,6 +118,19 @@ function ExamplesNavbar(props) {
                 </NavLink>
               </NavItem>
               <NavItem>
+                <NavLink to="/horario-2021" tag={Link}>
+                  <h5
+                    className="text-black"
+                    onClick={() => {
+                      setIsOpen(false);
+                      document.title = "CEPV - Horario 2021";
+                    }}
+                  >
+                    <strong>Horario 2021</strong>
+                  </h5>
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink to="/nosotros" tag={Link}>
                   <h5
                     className="text-black"
