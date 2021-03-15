@@ -83,7 +83,8 @@ const AdminNoticias = () => {
       req
         .listPOST("/api/NoticiaDetalles", data)
         .then((res) => {
-          console.log(res);
+          console.log(res,"noticiadetalle");
+
           if (res.code === 200) {
             req
               .listPOST("/api/noticiadetalles/categoria", {
@@ -93,6 +94,12 @@ const AdminNoticias = () => {
                 usRegistro: "CACEVEDO",
               })
               .then((res) => {
+                console.log({
+                  accion: "ADD_DEFAULT",
+                  idCategoria: idCategoria,
+                  idNoticiaHeader: idNoticiaHeader,
+                  usRegistro: "CACEVEDO",
+                })
                 if (res.code === 200) {
                   Swal.fire({
                     icon: "success",

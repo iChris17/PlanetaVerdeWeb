@@ -25,6 +25,8 @@ import HelmetData from "./components/Helmet/Helmet";
 //import Prematricula from "./views/MenusEspeciales/Prematricula";
 import Horario from "./views/MenusEspeciales/Horario"
 
+import Cultura from "./views/Cultura"
+
 export const history = createBrowserHistory();
 
 history.listen((location, action) => {
@@ -59,6 +61,17 @@ ReactDOM.render(
           <Fragment>
             <Navbar {...props} />
             <Horario {...props} />
+            <Footer />
+          </Fragment>
+        )}
+      />
+        <Route
+        exact
+        path="/cultura"
+        render={(props) => (
+          <Fragment>
+            <Navbar {...props} />
+            <Cultura {...props} />
             <Footer />
           </Fragment>
         )}

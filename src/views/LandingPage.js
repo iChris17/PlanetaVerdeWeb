@@ -50,7 +50,7 @@ function LandingPage() {
                   className="image-container img-fluid mb-4"
                   style={{
                     backgroundImage:
-                      "url(" + require("../assets/img/colegio2_opt.jpg") + ")",
+                      "url(" + require("../assets/img/inst1.jpg") + ")",
                   }}
                 ></div>
               </Col>
@@ -59,7 +59,7 @@ function LandingPage() {
                   className="image-container mb-4 img-fluid"
                   style={{
                     backgroundImage:
-                      "url(" + require("../assets/img/colegio4_opt.jpg") + ")",
+                      "url(" + require("../assets/img/inst2.jpg") + ")",
                   }}
                 ></div>
               </Col>
@@ -68,7 +68,7 @@ function LandingPage() {
                   className="image-container mb-4 img-fluid"
                   style={{
                     backgroundImage:
-                      "url(" + require("../assets/img/colegio6_opt.jpg") + ")",
+                      "url(" + require("../assets/img/inst3.jpg") + ")",
                   }}
                 ></div>
               </Col>
@@ -97,7 +97,7 @@ function LandingPage() {
                   className="image-container mb-4 img-fluid"
                   style={{
                     backgroundImage:
-                      "url(" + require("../assets/img/colegio8_opt.jpg") + ")",
+                      "url(" + require("../assets/img/inst4.jpg") + ")",
                   }}
                 ></div>
               </Col>

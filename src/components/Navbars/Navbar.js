@@ -144,6 +144,19 @@ function ExamplesNavbar(props) {
                 </NavLink>
               </NavItem>
               <NavItem>
+                <NavLink to="/cultura" tag={Link}>
+                  <h5
+                    className="text-black"
+                    onClick={() => {
+                      setIsOpen(false);
+                      document.title = "Centro Educativo Planeta Verde";
+                    }}
+                  >
+                    <strong>Cultura</strong>
+                  </h5>
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink to="/noticias/recientes-noticias" tag={Link}>
                   <h5
                     className="text-black"
